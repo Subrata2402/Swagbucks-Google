@@ -19,9 +19,9 @@ from dhooks import Webhook, Embed
 import aniso8601
 
 
-webhook_url="https://discordapp.com/api/webhooks/772141491061391381/0fxXUIA5-6mRqaErrTz8DYKAh6b1qnwKcyaNBiX9o6Z8HCz5EHgovA_4YQB7kC_CKUuQ"
+webhook_url="https://discordapp.com/api/webhooks/768785310292639777/TVKsRd9YVPy6eCQNSOZqVqOX4V4EFanXzPa_c5XgIjwQlxLwRqhm3IoZX6W2wa4nTOVz"
 
-we="https://discordapp.com/api/webhooks/772141491061391381/0fxXUIA5-6mRqaErrTz8DYKAh6b1qnwKcyaNBiX9o6Z8HCz5EHgovA_4YQB7kC_CKUuQ"
+we="https://discordapp.com/api/webhooks/768785310292639777/TVKsRd9YVPy6eCQNSOZqVqOX4V4EFanXzPa_c5XgIjwQlxLwRqhm3IoZX6W2wa4nTOVz"
 
 
 try:
@@ -161,21 +161,18 @@ def connect_websocket(socket_url, auth_token):
                 if countoption1 == maxcount:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}** <:emoji_13:772843132093202443>\n**2. {answers[1]}:** **{countoption2}**\n**3. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
                     hook.send(embed=embed2)
-                    hook.send(f"**Google Answer = 1. {answers[0]}** <:emoji_13:772843132093202443>")
-                    hook.send("hq")
-                    hook.send("+")
+                    hook.send(f"**Google Answer = 1️⃣ {answers[0]}** <:emoji_13:772843132093202443>")
+                    hook.send("hp")
                 elif countoption2 == maxcount:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}**\n**2. {answers[1]}:** **{countoption2}** <:emoji_13:772843132093202443>\n**3. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
                     hook.send(embed=embed2)
-                    hook.send(f"**Google Answer = 2. {answers[1]}** <:emoji_13:772843132093202443>")
-                    hook.send("hq")
-                    hook.send("+")
+                    hook.send(f"**Google Answer = 2️⃣ {answers[1]}** <:emoji_13:772843132093202443>")
+                    hook.send("hp")
                 else:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}**\n**2. {answers[1]}:** **{countoption2}**\n**3. {answers[2]}:** **{countoption3}** <:emoji_13:772843132093202443>", color=0x00FBFF)
                     hook.send(embed=embed2)
-                    hook.send(f"**Google Answer = 3. {answers[2]}** <:emoji_13:772843132093202443>")
-                    hook.send("hq")
-                    hook.send("+")
+                    hook.send(f"**Google Answer = 3️⃣ {answers[2]}** <:emoji_13:772843132093202443>")
+                    hook.send("hp")
 
             elif message_data["type"] == "questionSummary":
 
