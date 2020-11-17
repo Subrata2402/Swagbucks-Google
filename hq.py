@@ -19,9 +19,9 @@ from dhooks import Webhook, Embed
 import aniso8601
 
 
-webhook_url="https://discordapp.com/api/webhooks/776668925467033611/Hr9XFpAOBplyRtEi_QrlkhdergmiHxWOyrsrb4affoFfoSqoyib_ou5aD5Rvngo7h3hN"
+webhook_url="https://discordapp.com/api/webhooks/778280176932093953/bTSTVZVWon3-bkrOdbjHCFM-ZbEVOPAX8V-ByKOZ_1lA6qntNtCF7Ts66v3MwwbEPmlV"
 
-we="https://discordapp.com/api/webhooks/776668925467033611/Hr9XFpAOBplyRtEi_QrlkhdergmiHxWOyrsrb4affoFfoSqoyib_ou5aD5Rvngo7h3hN"
+we="https://discordapp.com/api/webhooks/778280176932093953/bTSTVZVWon3-bkrOdbjHCFM-ZbEVOPAX8V-ByKOZ_1lA6qntNtCF7Ts66v3MwwbEPmlV"
 
 
 try:
