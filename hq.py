@@ -189,7 +189,7 @@ def connect_websocket(socket_url, auth_token):
                 print(eliminated)
                 #hook.send(f"**Correct Answer -- {correct}**")
                 #hook.send(f"**Advancing -- {advancing}      Eliminating --- {eliminated}**")
-                embd=discord.Embed(title="**__Answer Stats !__** ",description=f"**● Correct Answer: {correct}** <:emoji_13:772843132093202443>\n**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**",color=0x4286f4)
+                embd=discord.Embed(title=f"**Question {qcnt} of {Fullcnt}** ",description=f"**[{question}](google_query)**\n\n**__Answer Stats !__**\n**● Correct Answer: {correct}** <:emoji_13:772843132093202443>\n**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**",color=0x4286f4)
                 embd.set_footer(text=f"HQ Google | Subrata#3297")
                 hook.send(embed=embd)
 
