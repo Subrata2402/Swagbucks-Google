@@ -81,7 +81,7 @@ def show_not_on():
             x_indi = x_ind.strftime("%d/%m/%Y")
     
             prize = (response_data["nextShowPrize"])
-            sleep(5)
+            sleep(15)
             print(x_in)
             print(x_indi)
             print(prize)
