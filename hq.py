@@ -81,7 +81,7 @@ def show_not_on():
             x_indi = x_ind.strftime("%d/%m/%Y")
     
             prize = (response_data["nextShowPrize"])
-            time.sleep(5)
+            sleep(5)
             print(x_in)
             print(x_indi)
             print(prize)
@@ -162,14 +162,23 @@ def connect_websocket(socket_url, auth_token):
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}** ✅\n**2. {answers[1]}:** **{countoption2}**\n**3. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
                     hook.send(embed=embed2)
                     hook.send("+")
+                    sleep(10) 
+                    embed3=discord.Embed(title="",description="**Time out**<a⏲️771260521336668172>") 
+                    hook.send(embed=embed3)
                 elif countoption2 == maxcount:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}**\n**2. {answers[1]}:** **{countoption2}** ✅\n**3. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
                     hook.send(embed=embed2)
                     hook.send("+")
+                    sleep(10) 
+                    embed3=discord.Embed(title="",description="**Time out**<a⏲️771260521336668172>") 
+                    hook.send(embed=embed3)
                 else:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}**\n**2. {answers[1]}:** **{countoption2}**\n**3. {answers[2]}:** **{countoption3}** ✅", color=0x00FBFF)
                     hook.send(embed=embed2)
                     hook.send("+")
+                    sleep(10) 
+                    embed3=discord.Embed(title="",description="**Time out**<a⏲️771260521336668172>") 
+                    hook.send(embed=embed3)
 
             elif message_data["type"] == "questionSummary":
 
