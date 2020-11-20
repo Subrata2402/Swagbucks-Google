@@ -183,6 +183,7 @@ def connect_websocket(socket_url, auth_token):
                 advancing = message_data['advancingPlayersCount']
                 eliminated = message_data['eliminatedPlayersCount']
                 nextcheck = message_data['nextCheckpointIn']
+                money = str(message_data["advancing"][0]["prize"])
 
                 print(colored(correct, "blue"))
                 print(advancing)
@@ -190,18 +191,18 @@ def connect_websocket(socket_url, auth_token):
                 #hook.send(f"**Correct Answer -- {correct}**")
                 #hook.send(f"**Advancing -- {advancing}      Eliminating --- {eliminated}**")
                 embd=discord.Embed(title=f"**Question No. {qcnt} of {Fullcnt}**", description=f"**[{question}]({google_query})**\n**Correct Answer: {correct}** <:emoji_13:772843132093202443>",color=0x4286f4)
-                embed.add_field(name="**__Status !__**", value=f"**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**", inline=True)
+                embd.add_field(name="**__Status !__**", value=f"**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**", inline=True)
                 embd.set_footer(text=f"HQ Google | Subrata#3297")
-                self.embed.set_author(name='Vedantu')
                 hook.send(embed=embd)
+                hook.send(f"Current Payout: {money}")
 
             elif message_data["type"] == "gameSummary":
                 winn = message_data['numWinners']
                 prizeMoney = str(message_data["winners"][0]["prize"])
                 embed=discord.Embed(title="**__Game Summary !__**",description="",color=0x00FBFF)
                 embed.add_field(name="**● Payout :**", value=f"**➨ {prizeMoney}**", inline=True)
-                embed.add_field(name="**● Total Winners :**", value=f"**➨ {winn} 🎉**", inline=True)
-               # embed.add_field(name="*● Prize Money :**", value=f"**5000$**", inline=True)
+                embed.add_field(name="**● Total Winners :**", value=f"**➨ {winn}**", inline=True)
+                embed.add_field(name="**● Prize Money :**", value=f"**➨ $5,000**", inline=True)
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/737764195743039488/737768505935659178/giphy1.gif")
                 embed.set_footer(text=f"HQ Google | Subrata#3297")
                 hook.send(embed=embed)
