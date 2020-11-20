@@ -183,7 +183,7 @@ def connect_websocket(socket_url, auth_token):
                 advancing = message_data['advancingPlayersCount']
                 eliminated = message_data['eliminatedPlayersCount']
                 nextcheck = message_data['nextCheckpointIn']
-                money = str(message_data["advancing"][0]["prize"])
+                #money = str(message_data["advancing"][0]["prize"])
 
                 print(colored(correct, "blue"))
                 print(advancing)
@@ -194,7 +194,7 @@ def connect_websocket(socket_url, auth_token):
                 embd.add_field(name="**__Status !__**", value=f"**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**", inline=True)
                 embd.set_footer(text=f"HQ Google | Subrata#3297")
                 hook.send(embed=embd)
-                hook.send(f"Current Payout: {money}")
+                #hook.send(f"Current Payout: {money}")
 
             elif message_data["type"] == "gameSummary":
                 winn = message_data['numWinners']
