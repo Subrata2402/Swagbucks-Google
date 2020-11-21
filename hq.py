@@ -201,7 +201,7 @@ def connect_websocket(socket_url, auth_token):
                 #hook.send(f"**Correct Answer -- {correct}**")
                 #hook.send(f"**Advancing -- {advancing}      Eliminating --- {eliminated}**")
                 embd=discord.Embed(title=f"**Question No. {qcnt} of {Fullcnt}**", description=f"**[{question}]({google_query})**",color=0x4286f4)
-                embd.add_field(name="**Correct Answer :**", value=f"**[{correct}]({google_query})** ✅", inline=True)
+                embd.add_field(name="**Correct Answer :**", value=f"**{ans_str}. [{correct}]({google_query})** ✅", inline=True)
                 embd.add_field(name="**__Status !__**", value=f"**● Advancing Players: {advancing} ☑️**\n**● Eliminated  Players: {eliminated}** ❌", inline=True)
                 embd.set_footer(text=f"HQ Google | Subrata#3297")
                 hook.send(embed=embd)
