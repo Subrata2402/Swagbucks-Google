@@ -17,6 +17,7 @@ import re
 from bs4 import BeautifulSoup
 from dhooks import Webhook, Embed
 import aniso8601
+from time import sleep
 
 
 webhook_url="https://discordapp.com/api/webhooks/778280176932093953/bTSTVZVWon3-bkrOdbjHCFM-ZbEVOPAX8V-ByKOZ_1lA6qntNtCF7Ts66v3MwwbEPmlV"
@@ -162,22 +163,22 @@ def connect_websocket(socket_url, auth_token):
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}** ✅\n**2. {answers[1]}:** **{countoption2}**\n**3. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
                     hook.send(embed=embed2)
                     hook.send("+")
-                    time.sleep(10) 
-                    embed3=discord.Embed(title="",description="**Time out**<a⏲️771260521336668172>") 
+                    sleep(10)
+                    embed3=discord.Embed(title="",description="**Time out**⏲️") 
                     hook.send(embed=embed3)
                 elif countoption2 == maxcount:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}**\n**2. {answers[1]}:** **{countoption2}** ✅\n**3. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
                     hook.send(embed=embed2)
                     hook.send("+")
-                    time.sleep(10) 
-                    embed3=discord.Embed(title="",description="**Time out**<a⏲️771260521336668172>") 
+                    sleep(10)
+                    embed3=discord.Embed(title="",description="**Time out**⏲️") 
                     hook.send(embed=embed3)
                 else:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}**\n**2. {answers[1]}:** **{countoption2}**\n**3. {answers[2]}:** **{countoption3}** ✅", color=0x00FBFF)
                     hook.send(embed=embed2)
                     hook.send("+")
-                    time.sleep(10) 
-                    embed3=discord.Embed(title="",description="**Time out**<a⏲️771260521336668172>") 
+                    sleep(10)
+                    embed3=discord.Embed(title="",description="**Time out**⏲️") 
                     hook.send(embed=embed3)
 
             elif message_data["type"] == "questionSummary":
