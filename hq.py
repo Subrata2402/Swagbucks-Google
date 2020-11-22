@@ -162,27 +162,21 @@ def connect_websocket(socket_url, auth_token):
                 if countoption1 == maxcount:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}** ✅\n**2. {answers[1]}:** **{countoption2}**\n**3. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
                     hook.send(embed=embed2)
-                    embed3=discord.Embed(title=**__Google Answer !__**") 
-                    hook.send(embed=embed3)
                     sleep(10)
-                    embed4=discord.Embed(title="",description="**Time out**⏲️") 
-                    hook.send(embed=embed4)
+                    embed3=discord.Embed(title="",description="**Time out**⏲️") 
+                    hook.send(embed=embed3)
                 elif countoption2 == maxcount:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}**\n**2. {answers[1]}:** **{countoption2}** ✅\n**3. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
                     hook.send(embed=embed2)
-                    embed3=discord.Embed(title=**__Google Answer !__**") 
-                    hook.send(embed=embed3)
                     sleep(10)
-                    embed4=discord.Embed(title="",description="**Time out**⏲️") 
-                    hook.send(embed=embed4)
+                    embed3=discord.Embed(title="",description="**Time out**⏲️") 
+                    hook.send(embed=embed3)
                 else:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}**\n**2. {answers[1]}:** **{countoption2}**\n**3. {answers[2]}:** **{countoption3}** ✅", color=0x00FBFF)
                     hook.send(embed=embed2)
-                    embed3=discord.Embed(title=**__Google Answer !__**") 
-                    hook.send(embed=embed3)
                     sleep(10)
-                    embed4=discord.Embed(title="",description="**Time out**⏲️") 
-                    hook.send(embed=embed4)
+                    embed3=discord.Embed(title="",description="**Time out**⏲️") 
+                    hook.send(embed=embed3)
 
             elif message_data["type"] == "questionSummary":
 
