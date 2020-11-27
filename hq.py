@@ -177,6 +177,40 @@ def connect_websocket(socket_url, auth_token):
                     sleep(10)
                     embed3=discord.Embed(title="",description="**Time out**⏲️") 
                     hook.send(embed=embed3)
+                t = requests.get("http://bing.com/search?q=" + question)
+                sou = BeautifulSoup(t.text, 'html.parser')
+                response = sou.find_all("span", class_="st")
+                rest = str(t.text)
+                countoption4 = rest.count(option1)
+                countoption5 = rest.count(option2)
+                countoption6 = rest.count(option3)
+                maxcount = max(countoption4, countoption5, countoption6)
+                sumcount = countoption4+countoption5+countoption6
+                print("/n")
+                if countoption4 == maxcount:
+                	print(f"A {answers[0]}")
+                elif countoption5 == maxcount:
+                	print(f"B {answers[1]}")
+                else:
+                	print(f"C {answers[2]}")              
+                if countoption6 == maxcount:
+                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption4}** ✅\n**2. {answers[1]}:** **{countoption5}**\n**3. {answers[2]}:** **{countoption6}**", color=0x00FBFF)
+                    hook.send(embed=embed2)
+                    #sleep(10)
+                    #embed3=discord.Embed(title="",description="**Time out**⏲️") 
+                    #hook.send(embed=embed3)
+                elif countoption2 == maxcount:
+                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption4}**\n**2. {answers[1]}:** **{countoption5}** ✅\n**3. {answers[2]}:** **{countoption6}**", color=0x00FBFF)
+                    hook.send(embed=embed2)
+                    #sleep(10)
+                    #embed3=discord.Embed(title="",description="**Time out**⏲️") 
+                    #hook.send(embed=embed3)
+                else:
+                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption4}**\n**2. {answers[1]}:** **{countoption5}**\n**3. {answers[2]}:** **{countoption6}** ✅", color=0x00FBFF)
+                    hook.send(embed=embed2)
+                    #sleep(10)
+                    #embed3=discord.Embed(title="",description="**Time out**⏲️") 
+                    #hook.send(embed=embed3)
 
             elif message_data["type"] == "questionSummary":
 
@@ -198,7 +232,7 @@ def connect_websocket(socket_url, auth_token):
                 #hook.send(f"**Correct Answer -- {correct}**")
                 #hook.send(f"**Advancing -- {advancing}      Eliminating --- {eliminated}**")
                 embd=discord.Embed(title=f"**Question No. {qcnt} of {Fullcnt}**", description=f"**[{question}]({google_query})**",color=0x4286f4)
-                embd.add_field(name="**Correct Answer :**", value=f"**{ans_str}. [{correct}]({google_query})** ✅", inline=True)
+                embd.add_field(name="**Correct Answer :**", value=f"**[{correct}]({google_query})** ✅", inline=True)
                 embd.add_field(name="**__Status !__**", value=f"**● Advancing Players: {advancing} ☑️**\n**● Eliminated  Players: {eliminated}** ❌", inline=True)
                 embd.set_footer(text=f"HQ Google | Subrata#3297")
                 hook.send(embed=embd)
