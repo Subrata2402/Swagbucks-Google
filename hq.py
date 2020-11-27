@@ -179,7 +179,7 @@ def connect_websocket(socket_url, auth_token):
                     #hook.send(embed=embed3)
                 r = requests.get("http://www.google.com/search?q=" + question) 
                 soup = BeautifulSoup(r.text, 'html.parser')
-                linkElements = sou.select('.r a') 
+                linkElements = soup.select('.r a') 
                 linkToOpen = min(10, len(linkElements)) 
                 for i in range(linkToOpen): 
                       webbrowser.open('https://www.google.com/'+linkElements[i].get('href')) 
