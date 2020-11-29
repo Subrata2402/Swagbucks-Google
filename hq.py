@@ -143,36 +143,36 @@ def connect_websocket(socket_url, auth_token):
                 option1=f"{answers[0]}"
                 option2=f"{answers[1]}"
                 option3=f"{answers[2]}"
-                r = requests.get("http://google.com/search?q=" + question)
-                soup = BeautifulSoup(r.text, 'html.parser')
-                response = soup.find_all("span", class_="st")
-                res = str(r.text)
-                countoption1 = res.count(option1)
-                countoption2 = res.count(option2)
-                countoption3 = res.count(option3)
-                maxcount = max(countoption1, countoption2, countoption3)
-                sumcount = countoption1+countoption2+countoption3
+                t = requests.get("http://google.com/search?q=" + question)
+                sou = BeautifulSoup(t.text, 'html.parser')
+                response = sou.find_all("span", class_="st")
+                rest = str(t.text)
+                countoption4 = rest.count(option1)
+                countoption5 = rest.count(option2)
+                countoption6 = rest.count(option3)
+                maxcount = max(countoption4, countoption5, countoption6)
+                sumcount = countoption4+countoption5+countoption6
                 print("/n")
-                if countoption1 == maxcount:
+                if countoption4 == maxcount:
                 	print(f"A {answers[0]}")
-                elif countoption2 == maxcount:
+                elif countoption5 == maxcount:
                 	print(f"B {answers[1]}")
                 else:
                 	print(f"C {answers[2]}")              
-                if countoption1 == maxcount:
-                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}** ✅\n**2. {answers[1]}:** **{countoption2}**\n**3. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
+                if countoption6 == maxcount:
+                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption4}** ✅\n**2. {answers[1]}:** **{countoption5}**\n**3. {answers[2]}:** **{countoption6}**", color=0x00FBFF)
                     hook.send(embed=embed2)
                     #sleep(10)
                     #embed3=discord.Embed(title="",description="**Time out**⏲️") 
                     #hook.send(embed=embed3)
                 elif countoption2 == maxcount:
-                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}**\n**2. {answers[1]}:** **{countoption2}** ✅\n**3. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
+                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption4}**\n**2. {answers[1]}:** **{countoption5}** ✅\n**3. {answers[2]}:** **{countoption6}**", color=0x00FBFF)
                     hook.send(embed=embed2)
                     #sleep(10)
                     #embed3=discord.Embed(title="",description="**Time out**⏲️") 
                     #hook.send(embed=embed3)
                 else:
-                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption1}**\n**2. {answers[1]}:** **{countoption2}**\n**3. {answers[2]}:** **{countoption3}** ✅", color=0x00FBFF)
+                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption4}**\n**2. {answers[1]}:** **{countoption5}**\n**3. {answers[2]}:** **{countoption6}** ✅", color=0x00FBFF)
                     hook.send(embed=embed2)
                     #sleep(10)
                     #embed3=discord.Embed(title="",description="**Time out**⏲️") 
