@@ -143,54 +143,13 @@ def connect_websocket(socket_url, auth_token):
                 option1=f"{answers[0]}"
                 option2=f"{answers[1]}"
                 option3=f"{answers[2]}"
-                t = requests.get("http://google.com/search?q=" + question)
-                sou = BeautifulSoup(t.text, 'html.parser')
-                response = sou.find_all("span", class_="st")
-                rest = str(t.text)
-                countoption4 = rest.count(option1)
-                countoption5 = rest.count(option2)
-                countoption6 = rest.count(option3)
-                maxcount = max(countoption4, countoption5, countoption6)
-                sumcount = countoption4+countoption5+countoption6
-                print("/n")
-                if countoption4 == maxcount:
-                	print(f"A {answers[0]}")
-                elif countoption5 == maxcount:
-                	print(f"B {answers[1]}")
-                else:
-                	print(f"C {answers[2]}")              
-                if countoption6 == maxcount:
-                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption4}** ✅\n**2. {answers[1]}:** **{countoption5}**\n**3. {answers[2]}:** **{countoption6}**", color=0x00FBFF)
-                    hook.send(embed=embed2)
-                    #sleep(10)
-                    #embed3=discord.Embed(title="",description="**Time out**⏲️") 
-                    #hook.send(embed=embed3)
-                elif countoption2 == maxcount:
-                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption4}**\n**2. {answers[1]}:** **{countoption5}** ✅\n**3. {answers[2]}:** **{countoption6}**", color=0x00FBFF)
-                    hook.send(embed=embed2)
-                    #sleep(10)
-                    #embed3=discord.Embed(title="",description="**Time out**⏲️") 
-                    #hook.send(embed=embed3)
-                else:
-                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**1. {answers[0]}:** **{countoption4}**\n**2. {answers[1]}:** **{countoption5}**\n**3. {answers[2]}:** **{countoption6}** ✅", color=0x00FBFF)
-                    hook.send(embed=embed2)
-                    #sleep(10)
-                    #embed3=discord.Embed(title="",description="**Time out**⏲️") 
-                    #hook.send(embed=embed3)
                 r = requests.get("http://www.google.com/search?q=" + question) 
                 soup = BeautifulSoup(r.text, 'html.parser')
                 linkElements = soup.select('.r a') 
                 linkToOpen = min(10, len(linkElements)) 
                 for i in range(linkToOpen): 
                       webbrowser.open('https://www.google.com/'+linkElements[i].get('href')) 
-                response = soup.find_all('a') 
-                r = requests.get("http://www.google.com/search?q=" + question + option1 + option2 + option3) 
-                soup = BeautifulSoup(r.text, 'html.parser') 
-                linkElements = soup.select('.r a') 
-                linkToOpen = min(10, len(linkElements)) 
-                for i in range(linkToOpen): 
-                      webbrowser.open('https://www.google.com/'+linkElements[i].get('href')) 
-                response = soup.find_all('a') 
+                response = soup.find_all('a')
                 res = str(r.text)
                 
                 countoption1 = res.count(option1)
@@ -206,26 +165,26 @@ def connect_websocket(socket_url, auth_token):
                 else:
                 	print(f"C {answers[2]}")              
                 if countoption1 == maxcount:
-                    embed2=discord.Embed(title=f"**HQ Trivia Question {qcnt} out of {Fullcnt}**",description=f"**[{question}]({google_query})**\n**<a:Rgb:776665881945964556> Google Search Results! <a:searching:776665816849973248>:**\n\n**__Answer Choice ❶__**\n**[{answers[0]}]({google_q}): {countoption1}** <a:emoji_green:703812286107877456>\n\n**__Answer Choice ❷__**\n**[{answers[1]}]({google_q}): {countoption2}** \n\n**__Answer Choice ❸__**\n**[{answers[2]}]({google_q}): {countoption3}**")
+                    embed2=discord.Embed(description=f"Google Search Results! <a:searching:776665816849973248>:**\n\n**__Answer Choice ❶__**\n**[{answers[0]}]({google_q}): {countoption1}** <a:emoji_green:703812286107877456>\n\n**__Answer Choice ❷__**\n**[{answers[1]}]({google_q}): {countoption2}** \n\n**__Answer Choice ❸__**\n**[{answers[2]}]({google_q}): {countoption3}**")
                    # embed2.set_author(name = f"HQ Trivia Question {qcnt} out of {Fullcnt}")
                     embed2.set_thumbnail(url="https://cdn.discordapp.com/attachments/774945143153098812/776679860969930762/hqg.gif")
                     embed2.set_footer(text="Made By Team POISION BOTS",icon_url="https://cdn.discordapp.com/attachments/774945143153098812/778221671534297108/poision.jpg")
                     hook.send(embed=embed2)
-                    hq.send("+")
+                    #hq.send("+")
                 elif countoption2 == maxcount:
-                    embed2=discord.Embed(title=f"**<:emoji_24:696323975311261766> HQ Trivia Question {qcnt} out of {Fullcnt}**",description=f"**[{question}]({google_query})**\n**<a:Rgb:776665881945964556> Google Search Results! <a:searching:776665816849973248>:**\n\n**__Answer Choice ❶__**\n**[{answers[0]}]({google_q}): {countoption1}** \n\n**__Answer Choice ❷__**\n**[{answers[1]}]({google_q}): {countoption2}** <a:emoji_green:703812286107877456>\n\n**__Answer Choice ❸__**\n**[{answers[2]}]({google_q}): {countoption3}**")
+                    embed2=discord.Embed(description=f"Google Search Results! <a:searching:776665816849973248>:**\n\n**__Answer Choice ❶__**\n**[{answers[0]}]({google_q}): {countoption1}** \n\n**__Answer Choice ❷__**\n**[{answers[1]}]({google_q}): {countoption2}** <a:emoji_green:703812286107877456>\n\n**__Answer Choice ❸__**\n**[{answers[2]}]({google_q}): {countoption3}**")
                     #embed2.set_author(name = f"HQ Trivia Question {qcnt} out of {Fullcnt}")
                     embed2.set_thumbnail(url="https://cdn.discordapp.com/attachments/774945143153098812/776679860969930762/hqg.gif")
                     embed2.set_footer(text="Made By Team POISION BOTS",icon_url="https://cdn.discordapp.com/attachments/774945143153098812/778221671534297108/poision.jpg")
                     hook.send(embed=embed2)
-                    hq.send("+")
+                    #hq.send("+")
                 else:
-                    embed2=discord.Embed(title=f"**<:emoji_24:696323975311261766> HQ Trivia Question{qcnt} out of {Fullcnt}**",description=f"**[{question}]({google_query})**\n**<a:Rgb:776665881945964556> Google Search Results! <a:searching:776665816849973248>:**\n\n**__Answer Choice ❶__**\n**[{answers[0]}]({google_q}): {countoption1}** \n\n**__Answer Choice ❷__**\n**[{answers[1]}]({google_q}): {countoption2}** \n\n**__Answer Choice ❸__**\n**[{answers[2]}]({google_q}): {countoption3}** <a:emoji_green:703812286107877456>")
+                    embed2=discord.Embed(description=f"Google Search Results! <a:searching:776665816849973248>:**\n\n**__Answer Choice ❶__**\n**[{answers[0]}]({google_q}): {countoption1}** \n\n**__Answer Choice ❷__**\n**[{answers[1]}]({google_q}): {countoption2}** \n\n**__Answer Choice ❸__**\n**[{answers[2]}]({google_q}): {countoption3}** <a:emoji_green:703812286107877456>")
                   #  embed2.set_author(name = f"HQ Trivia Question {qcnt} out of {Fullcnt}")
                     embed2.set_thumbnail(url="https://cdn.discordapp.com/attachments/774945143153098812/776679860969930762/hqg.gif")
                     embed2.set_footer(text="Made By Team POISION BOTS",icon_url="https://cdn.discordapp.com/attachments/774945143153098812/778221671534297108/poision.jpg")
                     hook.send(embed=embed2)
-                    hq.send("+")
+                    #hq.send("+")
 
             elif message_data["type"] == "questionSummary":
 
