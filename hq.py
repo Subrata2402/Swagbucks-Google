@@ -79,7 +79,7 @@ def show_not_on():
             x_ind = tm.astimezone(timezone("Asia/Kolkata"))
             x_in = x_ind.strftime("%H:%M:%S [%d/%m/%Y] ")
             hp = "2463"
-            payout = str(5000/hp)
+            payout = str(5000/"hp")
       
             prize = (response_data["nextShowPrize"])
             #time.sleep(5)
