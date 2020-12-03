@@ -19,9 +19,9 @@ from dhooks import Webhook, Embed
 import aniso8601
 
 
-webhook_url="https://discordapp.com/api/webhooks/739231985959960697/l9o4LfiZdWOqzXhbpUriEOo25EbjAIicujboN_yGyHkzWe3c9cH0i_ILVHMcwn9f0Gyt"
+webhook_url="https://discordapp.com/api/webhooks/778280176932093953/bTSTVZVWon3-bkrOdbjHCFM-ZbEVOPAX8V-ByKOZ_1lA6qntNtCF7Ts66v3MwwbEPmlV"
 
-we="https://discordapp.com/api/webhooks/739231985959960697/l9o4LfiZdWOqzXhbpUriEOo25EbjAIicujboN_yGyHkzWe3c9cH0i_ILVHMcwn9f0Gyt"
+we="https://discordapp.com/api/webhooks/778280176932093953/bTSTVZVWon3-bkrOdbjHCFM-ZbEVOPAX8V-ByKOZ_1lA6qntNtCF7Ts66v3MwwbEPmlV"
 
 
 try:
@@ -80,7 +80,7 @@ def show_not_on():
             x_in = x_ind.strftime("%H:%M:%S [%d/%m/%Y] ")
     
             prize = (response_data["nextShowPrize"])
-            time.sleep(5)
+            #time.sleep(5)
             print(x_in)
             print(prize)
             embed = Embed(title=f"HQ Trivia", description=f"**Next Game Starts In**\n**{x_in}**", color=0x000000)
