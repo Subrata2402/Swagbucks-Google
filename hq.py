@@ -17,12 +17,11 @@ import re
 from bs4 import BeautifulSoup
 from dhooks import Webhook, Embed
 import aniso8601
-from time import sleep
 
 
-webhook_url="https://discordapp.com/api/webhooks/778280176932093953/bTSTVZVWon3-bkrOdbjHCFM-ZbEVOPAX8V-ByKOZ_1lA6qntNtCF7Ts66v3MwwbEPmlV"
+webhook_url="https://discordapp.com/api/webhooks/739231985959960697/l9o4LfiZdWOqzXhbpUriEOo25EbjAIicujboN_yGyHkzWe3c9cH0i_ILVHMcwn9f0Gyt"
 
-we="https://discordapp.com/api/webhooks/778280176932093953/bTSTVZVWon3-bkrOdbjHCFM-ZbEVOPAX8V-ByKOZ_1lA6qntNtCF7Ts66v3MwwbEPmlV"
+we="https://discordapp.com/api/webhooks/739231985959960697/l9o4LfiZdWOqzXhbpUriEOo25EbjAIicujboN_yGyHkzWe3c9cH0i_ILVHMcwn9f0Gyt"
 
 
 try:
@@ -34,7 +33,7 @@ except:
 try:
     hq = Webhook(we)
 except:
-    print("Invalid WebHook Url!")
+    print("Invalid WebHook Url Lol")
     
 
 def show_not_on():
@@ -78,18 +77,19 @@ def show_not_on():
             tm = aniso8601.parse_datetime(tim)
             x =  tm.strftime("%H:%M:%S [%d/%m/%Y] ")
             x_ind = tm.astimezone(timezone("Asia/Kolkata"))
-            x_in = x_ind.strftime("%H:%M:%S")
-            x_indi = x_ind.strftime("%d/%m/%Y")
+            x_in = x_ind.strftime("%H:%M:%S [%d/%m/%Y] ")
     
             prize = (response_data["nextShowPrize"])
             time.sleep(5)
             print(x_in)
-            print(x_indi)
             print(prize)
-            embed = Embed(title="**__Next Game Details !__**", description=f"**📆〢Date — {x_indi}\n⏰〢Time — {x_in} [I.S.T]\n💰〢Prize Money — {prize}** 🎉", color=0xff5733)
-            embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/765632168650866750/770460404714962974/IMG_20200920_211614.jpg")
-            embed.set_footer(text="HQ Trivia Show | Subrata#3297")
-            hook.send(embed=embed)
+            embed = Embed(title=f"HQ Trivia", description=f"**Next Game Starts In**\n**{x_in}**", color=0x000000)
+            embed.add_field(name="Next Show Prize", value=f"**{prize}**",inline=True)
+            embed.set_image(url="https://cdn.discordapp.com/attachments/649457795875209265/672845602824126494/Nitro_2.gif")
+            embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/578379566544846901/630400208265805835/401ec468afa82a2937b8ad3a4e811463.jpg")
+            embed.set_footer(text="HQ Google")
+            embed.timestamp = (datetime.datetime.utcnow())
+            hook.send(content="**Connected To Hq Websocket**✅",embed=embed)
 
 
 
@@ -130,28 +130,22 @@ def connect_websocket(socket_url, auth_token):
                 Fullcnt = message_data['questionCount']
 
                 print(f"\nQuestion number {qcnt} out of {Fullcnt}\n{question}")
-                #hook.send(f"**\nQuestion number {qcnt} out of {Fullcnt}\n{question}**")
-                #open_browser(question)
                 answers = [unidecode(ans["text"]) for ans in message_data["answers"]]
                 print(f"\n{answers[0]}\n{answers[1]}\n{answers[2]}\n")
                 real_question = str(question).replace(" ","+")
                 google_query = "https://google.com/search?q="+real_question             
-                embed=discord.Embed(title=f"**{qcnt}. {question}**", url="https://discord.gg/2degbQMAxU", description=f"**1. {answers[0]}\n2. {answers[1]}\n3. {answers[2]}**",color=0xff5733)
-                embed.set_footer(text="HQ Google | Subrata#3297")
-                embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/765632168650866750/770460404714962974/IMG_20200920_211614.jpg")
+                embed=discord.Embed(title=f"Question {qcnt}/{Fullcnt}",description=f"**{qcnt}.** {question}\n**Option 1**\n{answers[0]}\n**Option 2**\n{answers[1]}\n**Option 3**\n{answers[2]}", color=0x00ff00)
+                embed.set_footer(text="Made By Akhil")
+                embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/578379566544846901/630400208265805835/401ec468afa82a2937b8ad3a4e811463.jpg")
                 hook.send(embed=embed)
+                #hook.send("+hp")
                 option1=f"{answers[0]}"
                 option2=f"{answers[1]}"
                 option3=f"{answers[2]}"
-                r = requests.get("http://www.google.com/search?q=" + question) 
+                r = requests.get("http://google.co.in/search?q=" + question + option1 + option2 + option3)
                 soup = BeautifulSoup(r.text, 'html.parser')
-                linkElements = soup.select('.r a') 
-                linkToOpen = min(10, len(linkElements)) 
-                for i in range(linkToOpen): 
-                      webbrowser.open('https://www.google.com/'+linkElements[i].get('href')) 
-                response = soup.find_all('a')
+                response = soup.find_all("span", class_="st")
                 res = str(r.text)
-                
                 countoption1 = res.count(option1)
                 countoption2 = res.count(option2)
                 countoption3 = res.count(option3)
@@ -165,27 +159,21 @@ def connect_websocket(socket_url, auth_token):
                 else:
                 	print(f"C {answers[2]}")              
                 if countoption1 == maxcount:
-                    embed2=discord.Embed(description=f"Google Search Results! <a:searching:776665816849973248>:**\n\n**__Answer Choice ❶__**\n**[{answers[0]}]({google_q}): {countoption1}** <a:emoji_green:703812286107877456>\n\n**__Answer Choice ❷__**\n**[{answers[1]}]({google_q}): {countoption2}** \n\n**__Answer Choice ❸__**\n**[{answers[2]}]({google_q}): {countoption3}**")
-                   # embed2.set_author(name = f"HQ Trivia Question {qcnt} out of {Fullcnt}")
-                    embed2.set_thumbnail(url="https://cdn.discordapp.com/attachments/774945143153098812/776679860969930762/hqg.gif")
-                    embed2.set_footer(text="Made By Team POISION BOTS",icon_url="https://cdn.discordapp.com/attachments/774945143153098812/778221671534297108/poision.jpg")
+                    embed2=discord.Embed(title=f"Question {qcnt}/12",description=f"{question}\n\n**Google Results:**\n**➊.{answers[0]}:** **{countoption1}**✅ \n**➋.{answers[1]}:** **{countoption2}**\n**➌.{answers[2]}:** **{countoption3}**")
+                    embed2.set_footer(text="Made By ⚘!ϻ.Captainᴼᴾ")
                     hook.send(embed=embed2)
-                    #hq.send("+")
+                    #hook.send("hq")
                 elif countoption2 == maxcount:
-                    embed2=discord.Embed(description=f"Google Search Results! <a:searching:776665816849973248>:**\n\n**__Answer Choice ❶__**\n**[{answers[0]}]({google_q}): {countoption1}** \n\n**__Answer Choice ❷__**\n**[{answers[1]}]({google_q}): {countoption2}** <a:emoji_green:703812286107877456>\n\n**__Answer Choice ❸__**\n**[{answers[2]}]({google_q}): {countoption3}**")
-                    #embed2.set_author(name = f"HQ Trivia Question {qcnt} out of {Fullcnt}")
-                    embed2.set_thumbnail(url="https://cdn.discordapp.com/attachments/774945143153098812/776679860969930762/hqg.gif")
-                    embed2.set_footer(text="Made By Team POISION BOTS",icon_url="https://cdn.discordapp.com/attachments/774945143153098812/778221671534297108/poision.jpg")
+                    embed2=discord.Embed(title=f"Question {qcnt}/12",description=f"{question}\n\n**Google Results:**\n**➊.{answers[0]}:** **{countoption1}** \n**➋.{answers[1]}:** **{countoption2}** ✅ \n**➌.{answers[2]}:** **{countoption3}**")
+                    embed2.set_footer(text="Made By ⚘!ϻ.Captainᴼᴾ")
                     hook.send(embed=embed2)
-                    #hq.send("+")
+                    #hook.send("hq")
                 else:
-                    embed2=discord.Embed(description=f"Google Search Results! <a:searching:776665816849973248>:**\n\n**__Answer Choice ❶__**\n**[{answers[0]}]({google_q}): {countoption1}** \n\n**__Answer Choice ❷__**\n**[{answers[1]}]({google_q}): {countoption2}** \n\n**__Answer Choice ❸__**\n**[{answers[2]}]({google_q}): {countoption3}** <a:emoji_green:703812286107877456>")
-                  #  embed2.set_author(name = f"HQ Trivia Question {qcnt} out of {Fullcnt}")
-                    embed2.set_thumbnail(url="https://cdn.discordapp.com/attachments/774945143153098812/776679860969930762/hqg.gif")
-                    embed2.set_footer(text="Made By Team POISION BOTS",icon_url="https://cdn.discordapp.com/attachments/774945143153098812/778221671534297108/poision.jpg")
+                    embed2=discord.Embed(title=f"Question {qcnt}/12",description=f"{question}\n\n**Google Results:**\n**➊.{answers[0]}:** **{countoption1}**\n**➋.{answers[1]}:** **{countoption2}**\n**➌.{answers[2]}:** **{countoption1}**✅")
+                    embed2.set_footer(text="Made By ⚘!ϻ.Captainᴼᴾ")
                     hook.send(embed=embed2)
-                    #hq.send("+")
-
+                    #hook.send("hq")
+                    
             elif message_data["type"] == "questionSummary":
 
                 answer_counts = {}
@@ -198,29 +186,26 @@ def connect_websocket(socket_url, auth_token):
                 advancing = message_data['advancingPlayersCount']
                 eliminated = message_data['eliminatedPlayersCount']
                 nextcheck = message_data['nextCheckpointIn']
-                #money = str(message_data["advancing"][0]["prize"])
 
                 print(colored(correct, "blue"))
                 print(advancing)
                 print(eliminated)
-                #hook.send(f"**Correct Answer -- {correct}**")
-                #hook.send(f"**Advancing -- {advancing}      Eliminating --- {eliminated}**")
-                embd=discord.Embed(title=f"**Question No. {qcnt} of {Fullcnt}**", description=f"**[{question}]({google_query})**",color=0x4286f4)
-                embd.add_field(name="**Correct Answer :**", value=f"**[{correct}]({google_query})** ✅", inline=True)
-                embd.add_field(name="**__Status !__**", value=f"**● Advancing Players: {advancing} ☑️**\n**● Eliminated  Players: {eliminated}** ❌", inline=True)
-                embd.set_footer(text=f"HQ Google | Subrata#3297")
+                embd=discord.Embed(title="Answer Stats",description=f"**Correct Answer : {correct} ✅** ",color=0x00ff00)
+                embd.add_field(name=f"Advancing Players:",value=f"**{advancing} **",inline=True)
+                embd.add_field(name=f"Eliminated  Players:",value=f"**{eliminated} **",inline=True)
+                embd.set_thumbnail(url="")
+                embd.set_footer(text=f"Made By ⚘!ϻ.Captainᴼᴾ")
                 hook.send(embed=embd)
-                #hook.send(f"Current Payout: {prizeMoney}")
 
             elif message_data["type"] == "gameSummary":
                 winn = message_data['numWinners']
                 prizeMoney = str(message_data["winners"][0]["prize"])
-                embed=discord.Embed(title="**__Game Summary !__**",description="",color=0x00FBFF)
-                embed.add_field(name="**● Payout :**", value=f"**➨ {prizeMoney}**", inline=True)
-                embed.add_field(name="**● Total Winners :**", value=f"**➨ {winn}**", inline=True)
-                embed.add_field(name="**● Prize Money :**", value=f"**➨ $5,000**", inline=True)
+                embed=discord.Embed(title="**Game Summary**",description="",color=0x00FBFF)
+                embed.add_field(name="**� Payout:**", value=f"**{prizeMoney}**", inline=True)
+                embed.add_field(name="**� Total Winners :**", value=f"**{winn} 🎉**", inline=True)
+               # embed.add_field(name="**� Prize Money :**", value=f"**5000$**", inline=True)
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/737764195743039488/737768505935659178/giphy1.gif")
-                embed.set_footer(text=f"HQ Google | Subrata#3297")
+                embed.set_footer(text=f"Made By ⚘!ϻ.Captainᴼᴾ")
                 hook.send(embed=embed)
 
 
@@ -253,7 +238,7 @@ while True:
         #hook.send('Connecting to Socket : {}'.format(url))
 
         token = get_auth_token()
-        if token == 'NONE':
+        if token == 'None':
             print('Please enter a valid auth token.')
         else:
             connect_websocket(url, token)
