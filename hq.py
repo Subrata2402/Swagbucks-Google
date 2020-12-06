@@ -203,9 +203,8 @@ def connect_websocket(socket_url, auth_token):
                 print(eliminated)
                 #hook.send(f"**Correct Answer -- {correct}**")
                 #hook.send(f"**Advancing -- {advancing}      Eliminating --- {eliminated}**")
-                embd=discord.Embed(title=f"**Question No. {qcnt} of {Fullcnt}**", description=f"**[{question}]({google_query})**\n**Correct Answer: {correct}** <:emoji_13:772843132093202443>",color=0x4286f4)
-                embd.add_field(name="**__Status !__**", value=f"**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**", inline=True)
-                embd.set_footer(text=f"HQ Google | Subrata#3297")
+                embd=discord.Embed(title="**__Answer Stats !__** ",description=f"**● Correct Answer: {correct}** <:emoji_13:772843132093202443>\n**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**",color=0x4286f4)
+                embd.set_footer(text=f"HQ Google | Subrata#3297", icon_url="https://cdn.discordapp.com/avatars/660337342032248832/828f7b13ce161e8a9d4c129e0ac776c4.webp?size=1024")
                 hook.send(embed=embd)
 
             elif message_data["type"] == "gameSummary":
