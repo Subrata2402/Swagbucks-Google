@@ -89,7 +89,7 @@ def show_not_on():
             #embed.set_image(url="https://cdn.discordapp.com/attachments/649457795875209265/672845602824126494/Nitro_2.gif")
            # embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/578379566544846901/630400208265805835/401ec468afa82a2937b8ad3a4e811463.jpg")
             #embed.set_footer(text="Made By ⚘!ϻ.Captainᴼᴾ")
-            #hook.send(content="**Connected To Hq Websocket**✅",embed=embed)
+            #hook.send("**Connected To Hq Websocket**✅")
 
 
 
