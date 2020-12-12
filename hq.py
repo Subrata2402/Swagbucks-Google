@@ -17,11 +17,12 @@ import re
 from bs4 import BeautifulSoup
 from dhooks import Webhook, Embed
 import aniso8601
+from time import sleep
 
 
-webhook_url="https://discordapp.com/api/webhooks/778280176932093953/bTSTVZVWon3-bkrOdbjHCFM-ZbEVOPAX8V-ByKOZ_1lA6qntNtCF7Ts66v3MwwbEPmlV"
+webhook_url="https://discordapp.com/api/webhooks/786641497952223272/gjkGbLeABZ3151EwGYdmiTJoHu70J6tMkc6c0fAUtJ29T9sD0tVbVbtZblbHJ7gKLMO4"
 
-we="https://discordapp.com/api/webhooks/778280176932093953/bTSTVZVWon3-bkrOdbjHCFM-ZbEVOPAX8V-ByKOZ_1lA6qntNtCF7Ts66v3MwwbEPmlV"
+we="https://discordapp.com/api/webhooks/786641497952223272/gjkGbLeABZ3151EwGYdmiTJoHu70J6tMkc6c0fAUtJ29T9sD0tVbVbtZblbHJ7gKLMO4"
 
 
 try:
@@ -78,17 +79,17 @@ def show_not_on():
             x =  tm.strftime("%H:%M:%S [%d/%m/%Y] ")
             x_ind = tm.astimezone(timezone("Asia/Kolkata"))
             x_in = x_ind.strftime("%H:%M:%S [%d/%m/%Y] ")
-      
+    
             prize = (response_data["nextShowPrize"])
+            time.sleep(5)
             print(x_in)
             print(prize)
-            embed = Embed(description=f"**Next Game Starts In**\n**{x_in}**", color=0x000000)
-            embed.add_field(name="Next Show Prize", value=f"**{prize}**",inline=True)
-            embed.set_image(url="https://cdn.discordapp.com/attachments/649457795875209265/672845602824126494/Nitro_2.gif")
-            embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/578379566544846901/630400208265805835/401ec468afa82a2937b8ad3a4e811463.jpg")
-            embed.set_footer(text="HQ Google")
-            #embed.timestamp = (datetime.datetime.utcnow())
-            hook.send(content="**Connected To Hq Websocket**✅",embed=embed)
+           # embed = Embed(title=f"HQ Trivia", description=f"**Next Game Starts In**\n**{x_in}**", color=0x000000)
+            #embed.add_field(name="Next Show Prize", value=f"**{prize}**",inline=True)
+            #embed.set_image(url="https://cdn.discordapp.com/attachments/649457795875209265/672845602824126494/Nitro_2.gif")
+           # embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/578379566544846901/630400208265805835/401ec468afa82a2937b8ad3a4e811463.jpg")
+            #embed.set_footer(text="Made By ⚘!ϻ.Captainᴼᴾ")
+            #hook.send(content="**Connected To Hq Websocket**✅",embed=embed)
 
 
 
@@ -163,26 +164,20 @@ def connect_websocket(socket_url, auth_token):
                 if countoption1 == maxcount:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**１. {answers[0]}:** **{countoption1}** <:emoji_13:772843132093202443>\n**２. {answers[1]}:** **{countoption2}**\n**３. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
                     hook.send(embed=embed2)
-                    #hook.send("hr")
-                    #hook.send("hq")
                     sleep(10)
-                    embed3=discord.Embed(title="⏰ **Time's Up!**", color=0x00FBFF) 
+                    embed3=discord.Embed(title="⏰ Time's Up!", color=0x00FBFF) 
                     hook.send(embed=embed3)
                 elif countoption2 == maxcount:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**１. {answers[0]}:** **{countoption1}**\n**２. {answers[1]}:** **{countoption2}** <:emoji_13:772843132093202443>\n**３. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
                     hook.send(embed=embed2)
-                    #hook.send("hr")
-                    #hook.send("hq")
                     sleep(10)
-                    embed3=discord.Embed(title="⏰ **Time's Up!**", color=0x00FBFF) 
+                    embed3=discord.Embed(title="⏰ Time's Up!", color=0x00FBFF) 
                     hook.send(embed=embed3)
                 else:
                     embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**１. {answers[0]}:** **{countoption1}**\n**２. {answers[1]}:** **{countoption2}**\n**３. {answers[2]}:** **{countoption3}** <:emoji_13:772843132093202443>", color=0x00FBFF)
                     hook.send(embed=embed2)
-                    #hook.send("hr")
-                    #hook.send("hq")
                     sleep(10)
-                    embed3=discord.Embed(title="⏰ **Time's Up!**", color=0x00FBFF) 
+                    embed3=discord.Embed(title="⏰ Time's Up!", color=0x00FBFF) 
                     hook.send(embed=embed3)
                     
             elif message_data["type"] == "questionSummary":
@@ -201,16 +196,17 @@ def connect_websocket(socket_url, auth_token):
                 print(colored(correct, "blue"))
                 print(advancing)
                 print(eliminated)
-                #hook.send(f"**Correct Answer -- {correct}**")
-                #hook.send(f"**Advancing -- {advancing}      Eliminating --- {eliminated}**")
-                embd=discord.Embed(title="**__Answer Stats !__** ",description=f"**● Correct Answer: {correct}** <:emoji_13:772843132093202443>\n**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**",color=0x4286f4)
-                embd.set_footer(text=f"HQ Google | Subrata#3297", icon_url="https://cdn.discordapp.com/avatars/660337342032248832/828f7b13ce161e8a9d4c129e0ac776c4.webp?size=1024")
+                embd=discord.Embed(title=f"**__Answer Stats !__** ",description=f"**● Correct Answer: {correct}** <:emoji_13:772843132093202443>\n**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**",color=0x4286f4)
+                embd.set_footer(text=f"HQ Google | Subrata#3297", icon_url="")
                 hook.send(embed=embd)
 
             elif message_data["type"] == "gameSummary":
                 winn = message_data['numWinners']
                 prizeMoney = str(message_data["winners"][0]["prize"])
-                embed=discord.Embed(title="**__Game Summary !__**",description=f"**● Payout: {prizeMoney}**\n**● Total Winners: {winn}**\n**● Prize Money: $5,000**",color=0x00FBFF)
+                embed=discord.Embed(title="**__Game Summary !__**",description=f"**● Payout: {prizeMoney}\n● Total Winners: {winn}\n● Prize Money: $5,000**",color=0x00FBFF)
+                #embed.add_field(name="**● Payout :**", value=f"**➨ {prizeMoney}**", inline=True)
+                #embed.add_field(name="**● Total Winners :**", value=f"**➨ {winn} 🎉**", inline=True)
+               # embed.add_field(name="*● Prize Money :**", value=f"**5000$**", inline=True)
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/737764195743039488/737768505935659178/giphy1.gif")
                 embed.set_footer(text=f"HQ Google | Subrata#3297", icon_url="")
                 hook.send(embed=embed)
