@@ -162,19 +162,22 @@ def connect_websocket(socket_url, auth_token):
                 else:
                 	print(f"C {answers[2]}")              
                 if countoption1 == maxcount:
-                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**１. {answers[0]}:** **{countoption1}** <:emoji_13:772843132093202443>\n**２. {answers[1]}:** **{countoption2}**\n**３. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
+                    embed2=discord.Embed(title=f"**__Google Search Results !__**", description=f"**１. {answers[0]}:** **{countoption1}** <:emoji_13:772843132093202443>\n**２. {answers[1]}:** **{countoption2}**\n**３. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
+                    embed2.set_footer(text="HQ Google | Subrata#3297")
                     hook.send(embed=embed2)
                     sleep(10)
                     embed3=discord.Embed(title="⏰ Time's Up!", color=0x00FBFF) 
                     hook.send(embed=embed3)
                 elif countoption2 == maxcount:
-                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**１. {answers[0]}:** **{countoption1}**\n**２. {answers[1]}:** **{countoption2}** <:emoji_13:772843132093202443>\n**３. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
+                    embed2=discord.Embed(title=f"**__Google Search Results !__**", description=f"**１. {answers[0]}:** **{countoption1}**\n**２. {answers[1]}:** **{countoption2}** <:emoji_13:772843132093202443>\n**３. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
+                    embed2.set_footer(text="HQ Google | Subrata#3297")
                     hook.send(embed=embed2)
                     sleep(10)
                     embed3=discord.Embed(title="⏰ Time's Up!", color=0x00FBFF) 
                     hook.send(embed=embed3)
                 else:
-                    embed2=discord.Embed(title=f"**__Google Results !__**", description=f"**１. {answers[0]}:** **{countoption1}**\n**２. {answers[1]}:** **{countoption2}**\n**３. {answers[2]}:** **{countoption3}** <:emoji_13:772843132093202443>", color=0x00FBFF)
+                    embed2=discord.Embed(title=f"**__Google Search Results !__**", description=f"**１. {answers[0]}:** **{countoption1}**\n**２. {answers[1]}:** **{countoption2}**\n**３. {answers[2]}:** **{countoption3}** <:emoji_13:772843132093202443>", color=0x00FBFF)
+                    embed2.set_footer(text="HQ Google | Subrata#3297")
                     hook.send(embed=embed2)
                     sleep(10)
                     embed3=discord.Embed(title="⏰ Time's Up!", color=0x00FBFF) 
@@ -196,7 +199,8 @@ def connect_websocket(socket_url, auth_token):
                 print(colored(correct, "blue"))
                 print(advancing)
                 print(eliminated)
-                embd=discord.Embed(title=f"**__Answer Stats !__** ",description=f"**● Correct Answer: {correct}** <:emoji_13:772843132093202443>\n**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**",color=0x4286f4)
+                embd=discord.Embed(title=f"**Question No. {qcnt} out of {Fullcnt}**",  description=f"**[{question}]({google_query})**\n**Correct Answer: {correct}** <:emoji_13:772843132093202443>", color=0x4286f4)
+                embd.add_field(name="**__Status !__**", value=f"**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**", inline=True)
                 embd.set_footer(text=f"HQ Google | Subrata#3297", icon_url="")
                 hook.send(embed=embd)
 
