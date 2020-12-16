@@ -203,7 +203,7 @@ def connect_websocket(socket_url, auth_token):
                 print(colored(correct, "blue"))
                 print(advancing)
                 print(eliminated)
-                embd=discord.Embed(title=f"**Question No. {qcnt} out of {Fullcnt}**",  description=f"**[{question}]({google_query})**\n**Correct Answer: {correct}** <:emoji_13:772843132093202443>", color=0x4286f4)
+                embd=discord.Embed(title=f"**Question {qcnt} of {Fullcnt}**",  description=f"**[{question}]({google_query})**\n**Correct Answer: {correct}** <:emoji_13:772843132093202443>", color=0x4286f4)
                 embd.add_field(name="**__Status !__**", value=f"**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**", inline=True)
                 embd.set_footer(text=f"HQ Google | Subrata#3297", icon_url="")
                 hook.send(embed=embd)
