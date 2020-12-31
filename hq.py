@@ -78,19 +78,21 @@ def show_not_on():
             tm = aniso8601.parse_datetime(tim)
             x =  tm.strftime("%H:%M:%S [%d/%m/%Y] ")
             x_ind = tm.astimezone(timezone("Asia/Kolkata"))
-            x_in = x_ind.strftime("%H:%M:%S [%d/%m/%Y] ")
+            x_in = x_ind.strftime("%d/%m/%Y")
+            x_i = x_ind.strftime("%H:%M")
     
             prize = (response_data["nextShowPrize"])
             time.sleep(5)
             print(x_in)
             print(prize)
+            embed=discord.Embed(title=f"➜〢Date – {x_in}\n➜〢Time – {x_i}AM\n➜〢Prize Money – {prize}", color=0x000000)
            # embed = Embed(title=f"HQ Trivia", description=f"**Next Game Starts In**\n**{x_in}**", color=0x000000)
             #embed.add_field(name="Next Show Prize", value=f"**{prize}**",inline=True)
             #embed.set_image(url="https://cdn.discordapp.com/attachments/649457795875209265/672845602824126494/Nitro_2.gif")
            # embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/578379566544846901/630400208265805835/401ec468afa82a2937b8ad3a4e811463.jpg")
-            #embed.set_footer(text="Made By ⚘!ϻ.Captainᴼᴾ")
+            embed.set_footer(text="HQ Trivia Show | Subrata#3297")
             #embed=discord.Embed(title="**Connected to HQ Websocket** ✅", color=0x000000)
-            #hook.send(embed=embed)
+            hook.send(content="@everyone  **Next Game Details !**", embed=embed)
 
 
 
