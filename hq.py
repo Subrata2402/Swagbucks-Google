@@ -210,7 +210,7 @@ def connect_websocket(socket_url, auth_token):
             elif message_data["type"] == "gameSummary":
                 winn = message_data['numWinners']
                 prizeMoney = str(message_data["winners"][0]["prize"])
-                embed=discord.Embed(title="**__Game Summary !__**",description=f"**● Payout: {prizeMoney}\n● Total Winners: {winn}\n● Prize Money: $5,000**",color=0x00FBFF)
+                embed=discord.Embed(title="**__Game Summary !__**",description=f"**● Payout: {prizeMoney}\n● Total Winners: {winn}\n● Prize Money: $2,500**",color=0x00FBFF)
                 #embed.add_field(name="**● Payout :**", value=f"**➨ {prizeMoney}**", inline=True)
                 #embed.add_field(name="**● Total Winners :**", value=f"**➨ {winn} 🎉**", inline=True)
                # embed.add_field(name="*● Prize Money :**", value=f"**5000$**", inline=True)
