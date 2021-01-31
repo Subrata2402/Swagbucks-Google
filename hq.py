@@ -198,12 +198,14 @@ def connect_websocket(socket_url, auth_token):
                 advancing = message_data['advancingPlayersCount']
                 eliminated = message_data['eliminatedPlayersCount']
                 nextcheck = message_data['nextCheckpointIn']
+                ans = (5000)/(int(advancing))
+                payout = float("{:.2f}".format(ans))
 
                 print(colored(correct, "blue"))
                 print(advancing)
                 print(eliminated)
-                embd=discord.Embed(title=f"**Question {qcnt} of {Fullcnt}**",  description=f"**[{question}]({google_query})**\n**Correct Answer: {correct}** <:emoji_13:772843132093202443>", color=0x4286f4)
-                embd.add_field(name="**__Status !__**", value=f"**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**", inline=True)
+                embd=discord.Embed(title=f"**__Answer Status !__**",  description=f"● **Correct Answer: {correct}** <:emoji_13:772843132093202443>\n**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**\n● **Current Payout: {payout}**", color=0x4286f4)
+                #embd.add_field(name="**__Status !__**", value=f"**● Advancing Players: {advancing}**\n**● Eliminated  Players: {eliminated}**", inline=True)
                 embd.set_footer(text=f"HQ Google | Subrata#3297", icon_url="")
                 hook.send(embed=embd)
 
