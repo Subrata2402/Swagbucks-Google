@@ -22,7 +22,7 @@ from time import sleep
 
 webhook_url="https://discordapp.com/api/webhooks/805625579235704873/_nLAuCs3bCKIlWmFaFzxzBQDdVKPu6MJJgaKDlSgOvyC-u24Bdc9-gnJx7bqoJqj0NIg"
 
-we="https://discordapp.com/api/webhooks/805625579235704873/_nLAuCs3bCKIlWmFaFzxzBQDdVKPu6MJJgaKDlSgOvyC-u24Bdc9-gnJx7bqoJqj0NIg"
+we="https://discordapp.com/api/webhooks/805617639585480735/o6dKPMWro0o8mphA7iu3gB7ISNMP2gXS-4AVQu2n7V-1zVNm9NI2kDYAlFchpA87SgTG"
 
 
 try:
@@ -165,7 +165,7 @@ def connect_websocket(socket_url, auth_token):
                     embed2=discord.Embed(title=f"**__Google Search Results !__**", description=f"**１. {answers[0]}:** **{countoption1}** <:emoji_13:772843132093202443>\n**２. {answers[1]}:** **{countoption2}**\n**３. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
                     embed2.set_footer(text="HQ Google | Subrata#3297")
                     hook.send(embed=embed2)
-                    hook.send("dt")
+                    #hook.send("dt")
                     sleep(10)
                     embed3=discord.Embed(title="⏰ Time's Up!", color=0x00FBFF) 
                     hook.send(embed=embed3)
@@ -173,7 +173,7 @@ def connect_websocket(socket_url, auth_token):
                     embed2=discord.Embed(title=f"**__Google Search Results !__**", description=f"**１. {answers[0]}:** **{countoption1}**\n**２. {answers[1]}:** **{countoption2}** <:emoji_13:772843132093202443>\n**３. {answers[2]}:** **{countoption3}**", color=0x00FBFF)
                     embed2.set_footer(text="HQ Google | Subrata#3297")
                     hook.send(embed=embed2)
-                    hook.send("dt")
+                    #hook.send("dt")
                     sleep(10)
                     embed3=discord.Embed(title="⏰ Time's Up!", color=0x00FBFF) 
                     hook.send(embed=embed3)
@@ -181,7 +181,7 @@ def connect_websocket(socket_url, auth_token):
                     embed2=discord.Embed(title=f"**__Google Search Results !__**", description=f"**１. {answers[0]}:** **{countoption1}**\n**２. {answers[1]}:** **{countoption2}**\n**３. {answers[2]}:** **{countoption3}** <:emoji_13:772843132093202443>", color=0x00FBFF)
                     embed2.set_footer(text="HQ Google | Subrata#3297")
                     hook.send(embed=embed2)
-                    hook.send("dt")
+                    #hook.send("dt")
                     sleep(10)
                     embed3=discord.Embed(title="⏰ Time's Up!", color=0x00FBFF) 
                     hook.send(embed=embed3)
