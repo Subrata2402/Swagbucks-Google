@@ -1,6 +1,6 @@
 from DCHQWEB.dchqweb import dchqweb
-webhook_url = "https://discordapp.com/api/webhooks/809605192147402804/5LWFzDzkztp8E7usZK_V08cxJeDEx5ARts2z8Kvj0kSI_5h42R5Dw38lnIiJdNlkI5lL"
+webhook_url = "https://discordapp.com/api/webhooks/809838457501122601/7a8HMGzrHIZe_A9ea5oxX9CQxG3L5w4ydiTPtIljYHI4TKgtZuo1o4UQML4RVWsxYzLL"
 bearer_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI3MTk2MTczLCJ1c2VybmFtZSI6ImJlcm5pdGE0MiIsImF2YXRhclVybCI6ImdzOi8vY2RuLXByb2QtaHlwZS1zcGFjZS9kYS9wdXJwbGUucG5nIiwidG9rZW4iOm51bGwsInJvbGVzIjpbXSwiY2xpZW50IjoiIiwiZ3Vlc3RJZCI6bnVsbCwidiI6MSwiaWF0IjoxNjA4NzQwNjUwLCJleHAiOjE2MTY1MTY2NTAsImlzcyI6Imh5cGVxdWl6LzEifQ.i1Y1AAcLKP07BBGobItb_4rCEYhuPxPv-Tub8w-qZCI"
-crowd_command = "ab"
+#crowd_command = "ab"
 while True:
-	dchqweb(webhook_url,bearer_token,crowd_command)
+	dchqweb(webhook_url,bearer_token)
