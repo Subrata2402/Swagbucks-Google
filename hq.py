@@ -189,7 +189,30 @@ def connect_websocket(socket_url, auth_token):
                     sleep(10)
                     embed3=discord.Embed(title="⏰ Time's Up!", color=0x00FBFF) 
                     hook.send(embed=embed3)
-                    
+
+            elif message_data["type"] == "broadcastStats":
+                connected = message_data["viewerCounts"]["connected"]
+                playing = message_data["viewerCounts"]["playing"]
+                watching = message_data["viewerCounts"]["watching"]
+                advancing = message_data["roundCompleted"]
+                eliminated = message_data["roundEliminated"]
+                embed=discord.Embed(title="**__Answer Status !__**", description=f"**● Connected Players: {connected}\n● Playing: {playing}\n● Watching: {watching}\n● Advancing Players: {advancing}\n● Eliminated Players: {eliminated}**", color=0x00ffff)
+                embed.set_footer(text="HQ Words | Subrata#3297")
+                hook.send(embed=embed)
+
+            elif message_data["type"] == "endRound":
+                answer = message_data["answer"]
+                hint = message_data["hint"]
+                round_number = message_data["roundNumber"]
+                total_round = message_data["totalRounds"]
+                advancing = message_data["correctAnswers"]
+                eliminated = message_data["incorrectAnswers"]
+                letter = message_data["foundLetters"]
+                embed=discord.Embed(title="**Round {round_number} out of {total_round}**", description=f"**● Correct Answer: {answer}\n● Hint: {hint}\n● Advancing Players: {advancing}\n● Eliminated Players: {eliminated}\n● Found Letters: {letter}**", color=0x00ffff)
+                embed.set_footer(text="HQ Words | Subrata#3297")
+                hook.send(embed=embed)
+
+
             elif message_data["type"] == "questionSummary":
 
                 answer_counts = {}
