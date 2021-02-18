@@ -122,7 +122,7 @@ def connect_websocket(socket_url, auth_token):
             message = msg.text
             message = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", message)
             message_data = json.loads(message)
-           # print(message_data)
+            print(message_data)
 
             if message_data['type'] == 'question':
                 question = message_data['question']
@@ -208,7 +208,7 @@ def connect_websocket(socket_url, auth_token):
                 advancing = message_data["correctAnswers"]
                 eliminated = message_data["incorrectAnswers"]
                 letter = message_data["foundLetters"]
-                embed=discord.Embed(title="**Round {round_number} out of {total_round}**", description=f"**● Correct Answer: {answer}\n● Hint: {hint}\n● Advancing Players: {advancing}\n● Eliminated Players: {eliminated}\n● Found Letters: {letter}**", color=0x00ffff)
+                embed=discord.Embed(title=f"**Round {round_number} out of {total_round}**", description=f"**● Correct Answer: {answer}\n● Hint: {hint}\n● Advancing Players: {advancing}\n● Eliminated Players: {eliminated}\n● Found Letters: {letter}**", color=0x00ffff)
                 embed.set_footer(text="HQ Words | Subrata#3297")
                 hook.send(embed=embed)
 
