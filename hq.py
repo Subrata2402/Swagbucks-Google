@@ -194,9 +194,9 @@ def connect_websocket(socket_url, auth_token):
                 connected = message_data["viewerCounts"]["connected"]
                 playing = message_data["viewerCounts"]["playing"]
                 watching = message_data["viewerCounts"]["watching"]
-                advancing = message_data["roundCompleted"]
-                eliminated = message_data["roundEliminated"]
-                embed=discord.Embed(title="**__Answer Status !__**", description=f"**● Connected Players: {connected}\n● Playing: {playing}\n● Watching: {watching}\n● Advancing Players: {advancing}\n● Eliminated Players: {eliminated}**", color=0x00ffff)
+                #advancing = message_data["roundCompleted"]
+                #eliminated = message_data["roundEliminated"]
+                embed=discord.Embed(title="**__Answer Status !__**", description=f"**● Connected Players: {connected}\n● Playing: {playing}\n● Watching: {watching}**", color=0x00ffff)
                 embed.set_footer(text="HQ Words | Subrata#3297")
                 hook.send(embed=embed)
 
