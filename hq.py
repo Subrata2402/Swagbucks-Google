@@ -212,6 +212,18 @@ def connect_websocket(socket_url, auth_token):
                 embed.set_footer(text="HQ Words | Subrata#3297")
                 hook.send(embed=embed)
 
+            elif message_data["type"] == "interaction":
+                data = message_data["metadata"]
+                name = data["username"]
+                avatar_url = data["avatarUrl"]
+                message = data["message"]
+                id = data["userId"]
+                time = message_data["sent"]
+                embed=discord.Embed(description=message, color=0x00ff00)
+                embed.set_author(name=name, icon_url=avatar_url)
+                embed.set_footer(text=f"User ID: {id} | {time}")
+                embed.set_thumbnail(url=avatar_url)
+                hook.send(embed=embed)
 
             elif message_data["type"] == "questionSummary":
 
