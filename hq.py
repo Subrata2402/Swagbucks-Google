@@ -96,8 +96,9 @@ def show_not_on():
 def show_active():
     main_url = 'https://api-quiz.hype.space/shows/now'
     response_data = requests.get(main_url).json()
-    return response_data['active']
     print(response_data)
+    return response_data['active']
+    
 
 
 def get_socket_url():
