@@ -104,7 +104,9 @@ def show_active():
 def get_socket_url():
     main_url = 'https://api-quiz.hype.space/shows/now'
     response_data = requests.get(main_url).json()
-
+    socket_url = response_data['broadcast']['socketUrl']
+    if socket_url != None:
+        return print("Show is live.")
     socket_url = response_data['broadcast']['socketUrl'].replace('https', 'wss')
     return socket_url
 
