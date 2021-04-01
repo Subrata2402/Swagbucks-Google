@@ -74,24 +74,7 @@ def show_not_on():
             raise RuntimeError("Connection settings invalid")
         else:
             print("Show not on.")
-            tim = (response_data["nextShowTime"])
-            tm = aniso8601.parse_datetime(tim)
-            x =  tm.strftime("%H:%M:%S [%d/%m/%Y] ")
-            x_ind = tm.astimezone(timezone("Asia/Kolkata"))
-            x_in = x_ind.strftime("%d/%m/%Y")
-            x_i = x_ind.strftime("%H:%M")
-    
-            prize = (response_data["nextShowPrize"])
-            time.sleep(5)
-            print(x_in)
-            print(x_i)
-            print(prize)
-            #embed=discord.Embed(title=f"➜〢Date – {x_in}\n➜〢Time – {x_i}AM\n➜〢Prize Money – {prize}", color=0x00FBFF)
-            #embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/775384878942257173/794110961333174293/1024x1024bb.png")
-            #embed.set_footer(text="HQ Trivia Show | Subrata#3297")
-            #hook.send(content="@everyone  **Next Game Details !**", embed=embed)
-
-
+            
 
 def show_active():
     main_url = 'https://api-quiz.hype.space/shows/now'
