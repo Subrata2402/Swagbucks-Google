@@ -118,6 +118,7 @@ def connect_websocket(socket_url, auth_token):
         websocket.add_header(str.encode(header), str.encode(value))
 
     for msg in websocket.connect(ping_rate=5):
+        print(msg)
         if msg.name == "text":
             message = msg.text
             message = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", message)
