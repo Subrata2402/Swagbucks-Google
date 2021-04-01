@@ -110,7 +110,7 @@ def connect_websocket(socket_url, auth_token):
             message = msg.text
             message = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", message)
             message_data = json.loads(message)
-            print(message_data)
+            #print(message_data)
 
             if message_data['type'] == 'question':
                 question = message_data['question']
