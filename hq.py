@@ -35,7 +35,19 @@ try:
     hq = Webhook(we)
 except:
     print("Invalid WebHook Url Lol")
-    
+
+main_url = 'https://api-quiz.hype.space/shows/now'
+response_data = requests.get(main_url).json()
+tim = (response_data["nextShowTime"])
+tm = aniso8601.parse_datetime(tim)
+x_ind = tm.astimezone(timezone("Asia/Kolkata"))
+time = x_ind.strftime("%d-%m-%Y %I:%M %p")
+prize = (response_data["nextShowPrize"])
+for data in response_data["upcoming"]:
+    type = data["nextShowLabel"]["title"]
+embed=discord.Embed(title="**__HQ Next Show Details !__**", description=f"**• Show Name : {type}\n• Show Time : {time}\n• Prize Money : {prize}**", color=0x00FBFF)
+embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/799237115962851348/816261537101905951/1200px-HQ_logo.svg.png")
+hook.send(embed=embed)
 
 def show_not_on():
     colorama.init()
