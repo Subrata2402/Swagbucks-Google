@@ -41,12 +41,12 @@ response_data = requests.get(main_url).json()
 tim = (response_data["nextShowTime"])
 tm = aniso8601.parse_datetime(tim)
 x_ind = tm.astimezone(timezone("Asia/Kolkata"))
-time = x_ind.strftime("%d-%m-%Y %I:%M %p")
+show_time = x_ind.strftime("%d-%m-%Y %I:%M %p")
 prize = (response_data["nextShowPrize"])
 for data in response_data["upcoming"]:
     type = data["nextShowLabel"]["title"]
-embed=discord.Embed(title="**__HQ Next Show Details !__**", description=f"**• Show Name : {type}\n• Show Time : {time}\n• Prize Money : {prize}**", color=0x00FBFF)
-embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/799237115962851348/816261537101905951/1200px-HQ_logo.svg.png")
+embed=discord.Embed(title="**__HQ Next Show Details !__**", description=f"**• Show Name : {type}\n• Show Time : {show_time}\n• Prize Money : {prize}**", color=0x00FBFF)
+embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/814483066013351949/829424156348383283/IMG_20210329_102247.jpg")
 hook.send(embed=embed)
 
 def show_not_on():
@@ -129,7 +129,7 @@ def connect_websocket(socket_url, auth_token):
             if message_data['type'] == 'startRound':
                 hint = message_data["hint"]
                 puzzleState = message_data["puzzleState"]
-                round_number = message_data["roundNumber"]
+                round_number = int(message_data["roundNumber"]) + 1
                 total_round = message_data["totalRounds"]
                 embed=discord.Embed(title=f"**Round {round_number} out of {total_round}**", color=0x00ffff)
                 embed.add_field(name="**Hint :-**", value=f"**{hint}**")
@@ -141,7 +141,7 @@ def connect_websocket(socket_url, auth_token):
 
             elif message_data["type"] == "endRound":
                 answer = message_data["answer"]
-                round_number = message_data["roundNumber"]
+                round_number = int(message_data["roundNumber"]) + 1
                 total_round = message_data["totalRounds"]
                 advancing = message_data["correctAnswers"]
                 eliminated = message_data["incorrectAnswers"]
