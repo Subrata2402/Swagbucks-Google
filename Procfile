@@ -1,1 +1,1 @@
-worker: python friend.py
+worker: python hq.py
