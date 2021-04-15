@@ -125,7 +125,7 @@ def connect_websocket(socket_url, auth_token):
                 embed.add_field(name="**Puzzle :-**", value=f"`{puzzleState}`")
                 #description=f"**● Correct Answer: {answer}\n● Hint: {hint}\n● Advancing Players: {advancing}\n● Eliminated Players: {eliminated}\n● Found Letters: {letter}**", color=0x00ffff)
                 embed.set_footer(text="HQ Words | Subrata#3297")
-                embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/814483066013351949/829424156348383283/IMG_20210329_102247.jpg")
+                embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/814483066013351949/832053526917939250/UiaJ17RS_400x400.jpg")
                 hook.send(embed=embed)
 
             elif message_data["type"] == "endRound":
@@ -139,7 +139,7 @@ def connect_websocket(socket_url, auth_token):
                 embed.add_field(name="**Status :-**", value=f"**• Advancing Players: {advancing}\n• Eliminated Players: {eliminated}**")
                 #description=f"**● Correct Answer: {answer}\n● Hint: {hint}\n● Advancing Players: {advancing}\n● Eliminated Players: {eliminated}\n● Found Letters: {letter}**", color=0x00ffff)
                 embed.set_footer(text="HQ Words | Subrata#3297")
-                embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/814483066013351949/829424156348383283/IMG_20210329_102247.jpg")
+                embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/814483066013351949/832053526917939250/UiaJ17RS_400x400.jpg")
                 hook.send(embed=embed)
 
             elif message_data["type"] == "gameSummary":
