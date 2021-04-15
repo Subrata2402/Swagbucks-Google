@@ -20,9 +20,9 @@ import aniso8601
 from time import sleep
 
 
-webhook_url="https://discordapp.com/api/webhooks/826977215220678686/sgLdymliajzTbg4KbecpOtyG2DZZbs1dIWxcx1xbs2PHjdIB2hHs8j6R6UdIJQN--8S4"
+webhook_url="https://discordapp.com/api/webhooks/832049130489774080/3_mauDr0JKJN1JmHVuC1HpACs0Tz3bo8XeDHZZbIV_3rP1JR1AGoslenz1F1DrF7Q1si"
 
-we="https://discordapp.com/api/webhooks/826977215220678686/sgLdymliajzTbg4KbecpOtyG2DZZbs1dIWxcx1xbs2PHjdIB2hHs8j6R6UdIJQN--8S4"
+we="https://discordapp.com/api/webhooks/832049130489774080/3_mauDr0JKJN1JmHVuC1HpACs0Tz3bo8XeDHZZbIV_3rP1JR1AGoslenz1F1DrF7Q1si"
 
 
 try:
@@ -34,20 +34,9 @@ except:
 try:
     hq = Webhook(we)
 except:
-    print("Invalid WebHook Url Lol")
+    print("Invalid WebHook Url")
 
-main_url = 'https://api-quiz.hype.space/shows/now'
-response_data = requests.get(main_url).json()
-tim = (response_data["nextShowTime"])
-tm = aniso8601.parse_datetime(tim)
-x_ind = tm.astimezone(timezone("Asia/Kolkata"))
-show_time = x_ind.strftime("%d-%m-%Y %I:%M %p")
-prize = (response_data["nextShowPrize"])
-for data in response_data["upcoming"]:
-    type = data["nextShowLabel"]["title"]
-embed=discord.Embed(title="**__HQ Next Show Details !__**", description=f"**• Show Name : {type}\n• Show Time : {show_time}\n• Prize Money : {prize}**", color=0x00FBFF)
-embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/814483066013351949/829424156348383283/IMG_20210329_102247.jpg")
-hook.send(embed=embed)
+
 
 def show_not_on():
     colorama.init()
