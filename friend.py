@@ -1,4 +1,4 @@
-from DCHQWEB.dchqweb import dchqweb
+from DCHQWEB import dchqweb
 data = help(dchqweb)
 print(data)
 webhook_url = "https://discordapp.com/api/webhooks/809838457501122601/7a8HMGzrHIZe_A9ea5oxX9CQxG3L5w4ydiTPtIljYHI4TKgtZuo1o4UQML4RVWsxYzLL"
