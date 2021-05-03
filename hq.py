@@ -19,11 +19,8 @@ from dhooks import Webhook, Embed
 import aniso8601
 import aiohttp
 import asyncio
-ids1 = []
-ids2 = []
-ids3 = []
 
-webhook_url="webhook url"
+webhook_url="https://discordapp.com/api/webhooks/838837824614432849/Na_4Sl4PAbGQppbloqyrt6VfkkBIY2gkdttiy9Purd_1NNOmrKjc_PM-nprXm-yJLDmB"
 
 try:
     hook = Webhook(webhook_url)
@@ -119,51 +116,26 @@ def connect_websocket(socket_url, auth_token):
                 qcnt = message_data['questionNumber']
                 Fullcnt = message_data['questionCount']
                 id1 = message_data["answers"][0]["answerId"]
-                ids1.append(id1)
                 id2 = message_data["answers"][1]["answerId"]
-                ids2.append(id2)
                 id3 = message_data["answers"][2]["answerId"]
-                ids3.append(id3)
 
             elif message_data['type'] == 'answered':
                 user = ""
                 answ = ""
                 name = message_data["username"]
                 ans = message_data["answerId"]
-                if name == 'Xhide':
-                    user = "Mohit Raj"
-                elif name == 'angelalai':
-                    user = "Only Fun"
-                elif name == 'TheBigHQ':
-                    user = "Ethann 1"
-                elif name == 'ThatHQGuy':
-                    user = "Ethann 2"
-                elif name == 'maatya2':
-                    user = "Cool Yash"
-                op1 = list(ids1)
-                op2 = list(ids2)
-                op3 = list(ids3)
-                for a in op1:
-                    print(a)
-                for b in op2:
-                    print(b)
-                for c in op3:
-                    print(c)
-                if a == ans:
+                if ans == id1:
                     answ = "Option 1"
-                if b == ans:
+                elif ans == id2
                     answ = "Option 2"
-                if c == ans:
+                else:
                     answ = "Option 3"
-                embed = discord.Embed(title=f"``{user}`` : **{answ}**",description="",color=0x00ff00)
+                embed = discord.Embed(title=f"{name} went {answ}",description="",color=0x00ff00)
                 hook.send(embed=embed)
 
             elif message_data["type"] == "questionClosed":
                 embed=discord.Embed(title=":alarm_clock: Time,s UP",description="",color=0xa1fc03)
-                time.sleep(5)
-                ids1.clear()
-                ids2.clear()
-                ids3.clear()
+
 
 """
 def open_browser(question):
