@@ -76,6 +76,8 @@ def show_not_on():
             time.sleep(5)
             print(x_in)
             print(prize)
+            embed=discord.Embed(title="Game is not Live", color=0x00ffff)
+            hook.send(embed=embed)
 
 
 
