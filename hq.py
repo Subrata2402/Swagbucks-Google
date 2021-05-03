@@ -115,27 +115,29 @@ def connect_websocket(socket_url, auth_token):
                 question = message_data['question']
                 qcnt = message_data['questionNumber']
                 Fullcnt = message_data['questionCount']
+                embed=discord.Embed(title=f"Question {qcnt} out of {Fullcnt}", description=question, color=0x00ffff)
+                hook.send(embed=embed)
                 id1 = message_data["answers"][0]["answerId"]
                 id2 = message_data["answers"][1]["answerId"]
                 id3 = message_data["answers"][2]["answerId"]
 
             elif message_data['type'] == 'answered':
-                user = ""
-                answ = ""
                 name = message_data["username"]
-                ans = message_data["answerId"]
-                if ans == id1:
-                    answ = "Option 1"
-                elif ans == id2
-                    answ = "Option 2"
+                ansid = message_data["answerId"]
+                if ansid == id1:
+                    embed = discord.Embed(title=f"{name} went Option - 1", color=0x00ff00)
+                    hook.send(embed=embed)
+                elif ansid == id2:
+                    embed = discord.Embed(title=f"{name} went Option - 2", color=0x00ff00)
+                    hook.send(embed=embed)
                 else:
-                    answ = "Option 3"
-                embed = discord.Embed(title=f"{name} went {answ}",description="",color=0x00ff00)
-                hook.send(embed=embed)
+                    embed = discord.Embed(title=f"{name} went Option - 3", color=0x00ff00)
+                    hook.send(embed=embed)
+                
 
             elif message_data["type"] == "questionClosed":
-                embed=discord.Embed(title=":alarm_clock: Time,s UP",description="",color=0xa1fc03)
-
+                embed=discord.Embed(title="⏰ **| Time,s Up!**", color=0xa1fc03)
+                hook.send(embed=embed)
 
 """
 def open_browser(question):
