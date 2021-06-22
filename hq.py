@@ -50,7 +50,7 @@ def show_not_on():
                "user-agent": "SwagIQ-Android/34 (okhttp/3.10.0)"
               }
     try:
-        response_data = requests.get(url=main_url, headers=headers).json()
+        response_data = requests.post(url=main_url, headers=headers).json()
         print(response_data)
     except:
         print("Server response not JSON, retrying...")
@@ -71,7 +71,7 @@ def show_active():
     main_url = 'https://api.playswagiq.com/trivia/home?_uid='
     headers = {"Authorization": "Bearer BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
-    response_data = requests.get(url=main_url, headers=headers).json()
+    response_data = requests.post(url=main_url, headers=headers).json()
     return response_data['joinable']
 
 
@@ -79,7 +79,7 @@ def get_socket_url():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
     headers = {"Authorization": "Bearer BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
-    response_data = requests.get(url=main_url, headers=headers).json()
+    response_data = requests.post(url=main_url, headers=headers).json()
     id = response_data["viewId"]
     socket_url = f"wss://api.playswagiq.com/sock/1/game/{id}?_uid="
     return socket_url
