@@ -57,11 +57,11 @@ def show_not_on():
         time.sleep(1)
 
     logging.info(response_data)
-
-    if "joinable" not in response_data or response_data["joinable"] is None or response_data["joinable"] != "True":
-        if "error" in response_data and response_data["error"] == "Auth not valid":
-            raise RuntimeError("Connection settings invalid")
-        else:
+    main_url = 'https://api.playswagiq.com/trivia/join?_uid='
+    headers = {"Authorization": "Bearer BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w",
+               "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
+    response_data = requests.post(url=main_url, headers=headers).json()
+    if response_data["success"] == False:
             print("Show not on.")
             hook.send("Show not on.")
 
@@ -80,11 +80,10 @@ def get_socket_url():
     headers = {"Authorization": "Bearer BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
     response_data = requests.post(url=main_url, headers=headers).json()
-    if response_data["success"] != "False":
+    if response_data["success"] != False:
         id = response_data["viewId"]
         socket_url = f"wss://api.playswagiq.com/sock/1/game/{id}?_uid="
-    
-    return socket_url
+        return socket_url
 
 
 def connect_websocket(socket_url, auth_token):
