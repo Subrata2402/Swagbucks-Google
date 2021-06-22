@@ -80,8 +80,11 @@ def get_socket_url():
     headers = {"Authorization": "Bearer BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
     response_data = requests.post(url=main_url, headers=headers).json()
-    id = response_data["viewId"]
-    socket_url = f"wss://api.playswagiq.com/sock/1/game/{id}?_uid="
+    try:
+        id = response_data["viewId"]
+        socket_url = f"wss://api.playswagiq.com/sock/1/game/{id}?_uid="
+    except:
+        socket_url = ""
     return socket_url
 
 
@@ -100,8 +103,11 @@ def connect_websocket(socket_url, auth_token):
             message = msg.text
             message = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", message)
             message_data = json.loads(message)
-            if message_data['type'] != 'interaction':
-                print(message_data)
+            if 'comments' not in message_data:
+                try:
+                    hook.send(message_data)
+                except:
+                    print(message_data)
         
             
 def get_auth_token():
