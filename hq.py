@@ -50,7 +50,7 @@ def show_not_on():
                "user-agent": "SwagIQ-Android/34 (okhttp/3.10.0)"
               }
     try:
-        response_data = requests.get(main_url).json()
+        response_data = requests.get(url=main_url, headers=headers).json()
         print(response_data)
     except:
         print("Server response not JSON, retrying...")
@@ -63,19 +63,23 @@ def show_not_on():
             raise RuntimeError("Connection settings invalid")
         else:
             print("Show not on.")
-            hook.send("Game Is Not Live!")
+            hook.send("Show not on.")
 
 
 
 def show_active():
     main_url = 'https://api.playswagiq.com/trivia/home?_uid='
-    response_data = requests.get(main_url).json()
+    headers = {"Authorization": f"Bearer {auth_token}",
+               "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
+    response_data = requests.get(url=main_url, headers=headers).json()
     return response_data['joinable']
 
 
 def get_socket_url():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
-    response_data = requests.get(main_url).json()
+    headers = {"Authorization": f"Bearer {auth_token}",
+               "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
+    response_data = requests.get(url=main_url, headers=headers).json()
     id = response_data["viewId"]
     socket_url = f"wss://api.playswagiq.com/sock/1/game/{id}?_uid="
     return socket_url
