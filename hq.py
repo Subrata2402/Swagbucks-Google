@@ -81,10 +81,10 @@ def get_socket_url():
     headers = {"Authorization": "Bearer BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
     response_data = requests.post(url=main_url, headers=headers).json()
-    if response_data["success"] != False:
-        id = response_data["viewId"]
-        socket_url = f"wss://api.playswagiq.com/sock/1/game/{id}?_uid="
-        return socket_url
+    #if response_data["success"] != False:
+    id = response_data["viewId"]
+    socket_url = f"wss://api.playswagiq.com/sock/1/game/{id}?_uid="
+    return socket_url
 
 
 def connect_websocket(socket_url, auth_token):
