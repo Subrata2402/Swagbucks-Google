@@ -69,11 +69,11 @@ def show_not_on():
 
 
 def show_active():
-    main_url = 'https://api.playswagiq.com/trivia/home?_uid='
+    main_url = 'https://api.playswagiq.com/trivia/join?_uid='
     headers = {"Authorization": "Bearer BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
     response_data = requests.post(url=main_url, headers=headers).json()
-    return response_data['episode']['startDisplay']
+    return response_data['success']
 
 
 def get_socket_url():
@@ -102,22 +102,14 @@ def connect_websocket(socket_url, auth_token):
             message = msg.text
             message = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", message)
             message_data = json.loads(message)
+            hook.send(message_data)
             if 'comments' not in message_data:
                 try:
                     hook.send(message_data)
                 except:
                     print(message_data)
-            if "question" in message_data:
-                try:
-                    hook.send(message_data["question"])
-                except:
-                    print(message_data["question"])
-            elif "answerResults" in message_data:
-                try:
-                    hook.send(message_data["answerResults"])
-                except:
-                    print(message_data["answerResults"])
             
+
 def get_auth_token():
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "BTOKEN.txt"), "r") as conn_settings:
         settings = conn_settings.read().splitlines()
