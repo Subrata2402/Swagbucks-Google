@@ -69,7 +69,7 @@ def show_not_on():
 
 def show_active():
     main_url = 'https://api.playswagiq.com/trivia/home?_uid='
-    headers = {"Authorization": f"Bearer {auth_token}",
+    headers = {"Authorization": f"Bearer {BEARER_TOKEN}",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
     response_data = requests.get(url=main_url, headers=headers).json()
     return response_data['joinable']
@@ -77,7 +77,7 @@ def show_active():
 
 def get_socket_url():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
-    headers = {"Authorization": f"Bearer {auth_token}",
+    headers = {"Authorization": f"Bearer {BEARER_TOKEN}",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
     response_data = requests.get(url=main_url, headers=headers).json()
     id = response_data["viewId"]
