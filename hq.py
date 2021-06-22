@@ -102,7 +102,7 @@ def connect_websocket(socket_url, auth_token):
             message = msg.text
             message = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", message)
             message_data = json.loads(message)
-            hook.send(message_data)
+            print(message_data)
             if 'comments' not in message_data:
                 try:
                     hook.send(message_data)
