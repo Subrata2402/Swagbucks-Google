@@ -106,7 +106,16 @@ def connect_websocket(socket_url, auth_token):
                     hook.send(message_data)
                 except:
                     print(message_data)
-        
+            if "question" in message_data:
+                try:
+                    hook.send(message_data["question"])
+                except:
+                    print(message_data["question"])
+            elif "answerResults" in message_data:
+                try:
+                    hook.send(message_data["answerResults"])
+                except:
+                    print(message_data["answerResults"])
             
 def get_auth_token():
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "BTOKEN.txt"), "r") as conn_settings:
