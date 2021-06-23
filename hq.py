@@ -55,7 +55,7 @@ def show_not_on():
         print("Server response not JSON, retrying...")
         time.sleep(1)
 
-    logging.info(response_data)
+    logging.info(response_data1)
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
     headers = {"Authorization": "Bearer BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
