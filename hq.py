@@ -126,13 +126,13 @@ def connect_websocket(socket_url, auth_token):
                 optdi2 = message_data["question"]["answers"][1]["id"]
                 optdi3 = message_data["question"]["answers"][2]["id"]
                 sb = message_data["question"]["sb"]
-                embed=discord.Embed(title=f"**Question {qn} out of {tqn}**", description=f"     ", color=discord.Colour.random())
-                embed.add_field(name="**Options Id :-**", value=f"**1 - {optid1}\n2 - {optid2}\n3 - {optid3}\nSB for this Question : {sb}**")
+                embed=discord.Embed(title=f"**Question {qn} out of {tqn}**", description=f"**SB for this Question : 0{sb}**", color=discord.Colour.random())
+                embed.add_field(name="**Options Id :-**", value=f"**1 - {optid1}\n2 - {optid2}\n3 - {optid3}**")
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text="Swagbucks Live | Subrata#3250")
                 hook.send(embed=embed)
                 time.sleep(10)
-                embed=discord.Embed(title="**⏰ | Time's Up!**", color=0x00ff00)
+                embed=discord.Embed(title="**⏰ | Time's Up!**", color=discord.Colour.random())
                 hook.send(embed=embed)
             if message_data["code"] == 42:
                 ansid = message_data["correctAnswerId"]
