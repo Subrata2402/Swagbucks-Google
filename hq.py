@@ -50,7 +50,7 @@ def show_not_on():
                "user-agent": "SwagIQ-Android/34 (okhttp/3.10.0)"
               }
     try:
-        response_data = requests.post(url=main_url, headers=headers).json()
+        response_data1 = requests.post(url=main_url, headers=headers).json()
     except:
         print("Server response not JSON, retrying...")
         time.sleep(1)
@@ -63,7 +63,7 @@ def show_not_on():
     print(response_data["success"])
     if response_data["success"] == False:
         print("Show not on.")
-        data = response_data
+        data = response_data1
         title = data["episode"]["title"]
         prize = data["episode"]["grandPrizeDollars"]
         prize = '{:,}'.format(int(prize))
