@@ -79,6 +79,7 @@ def show_not_on():
         time = new_time.strftime("%d-%m-%Y %I:%M %p")
         embed=discord.Embed(title="**__SwagIQ Next Show Details !__**", description=f"**• Show Name : Swagbucks Live\n• Show Time : {time}\n• Prize Money : ${prize}**", color=discord.Colour.random())
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
+        embed.set_footer(text="Swagbucks Live | Subrata#3250")
         hq.send(embed=embed)
 
 
@@ -125,9 +126,13 @@ def connect_websocket(socket_url, auth_token):
                 optdi2 = message_data["question"]["answers"][1]["id"]
                 optdi3 = message_data["question"]["answers"][2]["id"]
                 sb = message_data["question"]["sb"]
-                embed=discord.Embed(title=f"**Question {qn} out of {tqn}**", description=f"**SB of this Question = {sb}\n\n1 - {optid2}\n2 - {optid2}\n3 - {optid3}**", color=0x00ffff)
+                embed=discord.Embed(title=f"**Question {qn} out of {tqn}**", description=f"     ", color=0x00ffff)
+                embed.add_field(name="**Options Id :-**", value=f"**1 - {optid1}\n2 - {optid2}\n3 - {optid3}\nSB for this Question : {sb}**")
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
-                embed.set_footer(text="Swagbucks | Subrata#3250")
+                embed.set_footer(text="Swagbucks Live | Subrata#3250")
+                hook.send(embed=embed)
+                time.sleep(10)
+                embed=discord.Embed(title="**⏰ | Time's Up!**", color=0x00ff00)
                 hook.send(embed=embed)
             if message_data["code"] == 42:
                 ansid = message_data["correctAnswerId"]
