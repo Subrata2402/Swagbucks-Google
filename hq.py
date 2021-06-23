@@ -66,6 +66,7 @@ def show_not_on():
         data = response_data1
         title = data["episode"]["title"]
         prize = data["episode"]["grandPrizeDollars"]
+        payout = prize*1000
         prize = '{:,}'.format(int(prize))
         time = data["episode"]["start"]
         r = datetime.fromtimestamp(time)
@@ -119,6 +120,7 @@ def connect_websocket(socket_url, auth_token):
                 optdi1 = message_data["question"]["answers"][0]["id"]
                 optdi2 = message_data["question"]["answers"][1]["id"]
                 optdi3 = message_data["question"]["answers"][2]["id"]
+                sb = message_data["question"]["sb"]
                 embed=discord.Embed(title=f"Question {qn} out of {tqn}", color=0x00ffff)
                 hook.send(embed=embed)
             if message_data["code"] == 42:
@@ -135,6 +137,8 @@ def connect_websocket(socket_url, auth_token):
                 pA = float("{:.2f}".format(percentAdvancing))
                 percentEliminated = (int(s)*(100))/(int(total))
                 pE = float("{:.2f}".format(percentEliminated))
+                pay = (payout)/(int(advancing))
+                payout = int(pay) + sb
                 if ansid == optid1:
                     option = "Option - 1"
                 if ansid == optid2:
