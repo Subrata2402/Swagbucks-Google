@@ -111,24 +111,32 @@ def connect_websocket(socket_url, auth_token):
             message = msg.text
             message = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", message)
             message_data = json.loads(message)
-            print(message_data)
-            if "comments" not in message_data:
+            if message_data["code"] != 21:
                 print(message_data)
             if message_data["code"] == 41:
                 qn = message_data["question"]["number"]
                 tqn = message_data["question"]["totalQuestions"]
+                optdi1 = message_data["question"]["answers"][0]["id"]
+                optdi2 = message_data["question"]["answers"][1]["id"]
+                optdi3 = message_data["question"]["answers"][2]["id"]
                 embed=discord.Embed(title=f"Question {qn} out of {tqn}", color=0x00ffff)
                 hook.send(embed=embed)
             if message_data["code"] == 42:
-                correct = message_data["correctAnswerId"]
+                ansid = message_data["correctAnswerId"]
                 s = 0
                 for answer in message_data["answerResults"]:
-                    if answer["answerId"] == correct:
-                        ansNum = answer["numAnswered"]
+                    if answer["answerId"] == ansid:
+                        advancing = answer["numAnswered"]
                     else:
                         anNum = answer["numAnswered"] 
                         s = s + anNum
-                embed=discord.Embed(title=f"Advancing Players : {ansNum}\nElimineted Players : {s}", color=0x00ffff)
+                if ansid == optid1:
+                    option = 1
+                if ansid == optid2:
+                    option = 2
+                if ansid == optid3:
+                    option = 3
+                embed=discord.Embed(title=f"Advancing Players : {advancing}\nElimineted Players : {s}", color=0x00ffff)
                 hook.send(embed=embed)
             if message_data["code"] == 49:
                 sb = message_data["winners"][0]["sb"]
