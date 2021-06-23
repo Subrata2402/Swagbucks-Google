@@ -63,6 +63,7 @@ def show_not_on():
     print(response_data["success"])
     if response_data["success"] == False:
         print("Show not on.")
+        data = response_data
         title = data["episode"]["title"]
         prize = data["episode"]["grandPrizeDollars"]
         prize = '{:,}'.format(int(prize))
