@@ -118,7 +118,7 @@ def connect_websocket(socket_url, auth_token):
                         ansNum = answer["numAnswered"]
                     else:
                         anNum = answer["numAnswered"] 
-                        s = s + ansNum
+                        s = s + anNum
                 embed=discord.Embed(title=f"Advancing Players : {ansNum}\nElimineted Players : {s}", color=0x00ffff)
                 hook.send(embed=embed)
 
