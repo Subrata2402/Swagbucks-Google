@@ -6,7 +6,7 @@ import logging
 import os
 #import Google_Search
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pytz import timezone
 from lomond import WebSocket
 from unidecode import unidecode
@@ -51,7 +51,6 @@ def show_not_on():
               }
     try:
         response_data = requests.post(url=main_url, headers=headers).json()
-        print(response_data)
     except:
         print("Server response not JSON, retrying...")
         time.sleep(1)
@@ -63,9 +62,18 @@ def show_not_on():
     response_data = requests.post(url=main_url, headers=headers).json()
     print(response_data["success"])
     if response_data["success"] == False:
-            print("Show not on.")
-            hook.send("Show not on.")
-
+        print("Show not on.")
+        title = data["episode"]["title"]
+        prize = data["episode"]["grandPrizeDollars"]
+        prize = '{:,}'.format(int(prize))
+        time = data["episode"]["start"]
+        r = datetime.fromtimestamp(time)
+        time_change = timedelta(hours=5, minutes=30)
+        new_time = r + time_change
+        time = new_time.strftime("%d-%m-%Y %I:%M %p")
+        embed=discord.Embed(title="**__SwagIQ Next Show Details !__**", description=f"**• Show Name : Swagbucks Live\n• Show Time : {time}\n• Prize Money : ${prize}**", color=discord.Colour.random())
+        embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
+        hook.send(embed=embed)
 
 
 def show_active():
@@ -110,7 +118,7 @@ def connect_websocket(socket_url, auth_token):
                 tqn = message_data["question"]["totalQuestions"]
                 embed=discord.Embed(title=f"Question {qn} out of {tqn}", color=0x00ffff)
                 hook.send(embed=embed)
-            if message_data["code"] == 42: 
+            if message_data["code"] == 42:
                 correct = message_data["correctAnswerId"]
                 s = 0
                 for answer in message_data["answerResults"]:
@@ -121,6 +129,11 @@ def connect_websocket(socket_url, auth_token):
                         s = s + anNum
                 embed=discord.Embed(title=f"Advancing Players : {ansNum}\nElimineted Players : {s}", color=0x00ffff)
                 hook.send(embed=embed)
+            if message_data["code"] == 49:
+                sb = message_data["winners"][0]["sb"]
+                embed = discord.Embed(title="**__Game Summary !__**", description=f"**• Payout : {sb}SB\n• Total Winners : {advancing}\n• Prize Money : {prize}**", color=0x00ffff)
+                hook.send(embed=embed)
+
 
 def get_auth_token():
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "BTOKEN.txt"), "r") as conn_settings:
