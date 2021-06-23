@@ -4,7 +4,6 @@ from termcolor import colored
 import datetime
 import logging
 import os
-#import Google_Search
 import time
 from datetime import datetime, timedelta
 from pytz import timezone
@@ -21,12 +20,17 @@ import aiohttp
 import asyncio
 
 webhook_url="https://discordapp.com/api/webhooks/856696688437755934/9NW-2w46XZp-Sd2TmZuJTAg2hz7FVFPVDt4VY_7ZnXf_5yhjB1yQHGFe_Eh23KXMj8aM"
-
+web_url = "https://discordapp.com/api/webhooks/857113978534232064/h4a4RBLkl4AfLXnhehEq4OECRS3x9t_16nJO95XCbgN7irSsSE8ldEQKPDZ8NsDt0-8b"
 try:
     hook = Webhook(webhook_url)
 except:
     print("Invalid WebHook Url!")
-                    
+
+try:
+    hq = Webhook(web_url)
+except:
+    print("Invalid WebHook Url!")
+
 def show_not_on():
     colorama.init()
     # Set up logging
@@ -75,7 +79,7 @@ def show_not_on():
         time = new_time.strftime("%d-%m-%Y %I:%M %p")
         embed=discord.Embed(title="**__SwagIQ Next Show Details !__**", description=f"**• Show Name : Swagbucks Live\n• Show Time : {time}\n• Prize Money : ${prize}**", color=discord.Colour.random())
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
-        hook.send(embed=embed)
+        hq.send(embed=embed)
 
 
 def show_active():
@@ -121,7 +125,9 @@ def connect_websocket(socket_url, auth_token):
                 optdi2 = message_data["question"]["answers"][1]["id"]
                 optdi3 = message_data["question"]["answers"][2]["id"]
                 sb = message_data["question"]["sb"]
-                embed=discord.Embed(title=f"Question {qn} out of {tqn}", color=0x00ffff)
+                embed=discord.Embed(title=f"**Question {qn} out of {tqn}**", description=f"**SB of this Question = {sb}\n\n1 - {optid2}\n2 - {optid2}\n3 - {optid3}**", color=0x00ffff)
+                embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
+                embed.set_footer(text="Swagbucks | Subrata#3250")
                 hook.send(embed=embed)
             if message_data["code"] == 42:
                 ansid = message_data["correctAnswerId"]
@@ -139,11 +145,11 @@ def connect_websocket(socket_url, auth_token):
                 pay = (payout)/(int(advancing))
                 payout = int(pay) + sb
                 if ansid == optid1:
-                    option = "Option - 1"
+                    option = f"Option 1. {optid1}"
                 if ansid == optid2:
-                    option = "Option - 2"
+                    option = f"Option 2. {optid2}"
                 if ansid == optid3:
-                    option = "Option - 3"
+                    option = f"Option 3. {optid3}"
                 embed=discord.Embed(title=f"**Question {qn} out of {tqn}**", color=0x00ffff)
                 embed.add_field(name="**Correct Answer :-**", value=f"**{option}**")
                 embed.add_field(name="**Status :-**", value=f"**• Advancing Players : {advancing} ({pA}%)\n• Elimineted Players : {s} ({e}%)\n• Current Payout : {payout}SB**")
