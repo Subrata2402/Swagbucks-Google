@@ -103,12 +103,24 @@ def connect_websocket(socket_url, auth_token):
             message = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", message)
             message_data = json.loads(message)
             print(message_data)
-            if 'comments' not in message_data:
-                try:
-                    hook.send(message_data)
-                except:
-                    print(message_data)
-            
+            if "comments" not in message_data:
+                print(message_data)
+            if message_data["code"] == 41:
+                qn = message_data["question"]["number"]
+                tqn = message_data["question"]["totalQuestions"]
+                embed=discord.Embed(title=f"Question {qn} out of {tqn}", color=0x00ffff)
+                hook.send(embed=embed)
+            if message_data["code"] == 42: 
+                correct = message_data["correctAnswerId"]
+                s = 0
+                for answer in message_data["answerResults"]:
+                    if answer["answerId"] == correct:
+                        ansNum = answer["numAnswered"]
+                    else:
+                        anNum = answer["numAnswered"] 
+                        s = s + ansNum
+                embed=discord.Embed(title=f"Advancing Players : {ansNum}\nElimineted Players : {s}", color=0x00ffff)
+                hook.send(embed=embed)
 
 def get_auth_token():
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "BTOKEN.txt"), "r") as conn_settings:
