@@ -159,13 +159,13 @@ def connect_websocket(socket_url, auth_token):
                 embed.add_field(name="**Correct Answer :-**", value=f"**{option}**")
                 embed.add_field(name="**Status :-**", value=f"**• Advancing Players : {advancing} ({pA}%)\n• Elimineted Players : {s} ({e}%)\n• Current Payout : {payout}SB**")
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
-                embed.set_footer(text="Swagbucks | Subrata#3250")
+                embed.set_footer(text="Swagbucks Live | Subrata#3250")
                 hook.send(embed=embed)
             if message_data["code"] == 49:
                 sb = message_data["winners"][0]["sb"]
                 embed = discord.Embed(title="**__Game Summary !__**", description=f"**• Payout : {sb}SB\n• Total Winners : {advancing}\n• Prize Money : ${prize}**", color=0x00ffff)
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
-                embed.set_footer(text="Swagbucks | Subrata#3250")
+                embed.set_footer(text="Swagbucks Live | Subrata#3250")
                 hook.send(embed=embed)
 
 
