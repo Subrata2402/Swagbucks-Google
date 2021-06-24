@@ -89,7 +89,7 @@ def show_not_on():
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
         #embed.set_footer(text="Swagbucks Live | Subrata#3250")
         sbl.send(embed=embed)
-        sb.send(embed=embed)
+        #sb.send(embed=embed)
 
 def show_active():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
