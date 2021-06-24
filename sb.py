@@ -30,7 +30,14 @@ except:
     print("Invalid WebHook Url!")
 
 try:
-    hq = Webhook(web_url)
+    sbl = Webhook(web_url)
+except:
+    print("Invalid WebHook Url!")
+
+web_url = "https://discordapp.com/api/webhooks/857540833196113930/DrrhTfgpK-p_q0_kkDj1psS7TkECy_NZE_OLjvZpg-FJWDClhdzey6OT-6u9KkM5Cx3f"
+
+try:
+    sb = Webhook(web_url)
 except:
     print("Invalid WebHook Url!")
 
@@ -81,7 +88,8 @@ def show_not_on():
         embed=discord.Embed(title="**__SwagIQ Next Show Details !__**", description=f"**• Show Name : Swagbucks Live\n• Show Time : {time}\n• Prize Money : ${prize}**", color=discord.Colour.random())
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
         #embed.set_footer(text="Swagbucks Live | Subrata#3250")
-        hq.send(embed=embed)
+        sbl.send(embed=embed)
+        sb.send(embed=embed)
 
 def show_active():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
