@@ -47,7 +47,6 @@ def show_not_on():
             logging.fatal(f"Settings read error: {settings}")
             raise e
 
-    print("getting")
     main_url = f"https://api.playswagiq.com/trivia/home?_uid="
     headers = {
                "Authorization": f"Bearer {BEARER_TOKEN}",
@@ -55,9 +54,6 @@ def show_not_on():
               }
     try:
         response_data1 = requests.post(url=main_url, headers=headers).json()
-        prize = response_data1["episode"]["grandPrizeDollars"]
-        pt = prize*100
-        prize = '{:,}'.format(int(prize))
     except:
         print("Server response not JSON, retrying...")
         time.sleep(1)
@@ -67,7 +63,6 @@ def show_not_on():
     headers = {"Authorization": "Bearer BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
     response_data = requests.post(url=main_url, headers=headers).json()
-    print(response_data["success"])
     if response_data["success"] == False:
         print("Show not on.")
         data = response_data1
@@ -120,6 +115,13 @@ def connect_websocket(socket_url, auth_token):
             message = msg.text
             message = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", message)
             message_data = json.loads(message)
+            main_url = f"https://api.playswagiq.com/trivia/home?_uid="
+            headers = {"Authorization": f"Bearer {BEARER_TOKEN}",
+                       "user-agent": "SwagIQ-Android/34 (okhttp/3.10.0)"}
+            response_data = requests.post(url=main_url, headers=headers).json()
+            prize = response_data["episode"]["grandPrizeDollars"]
+            pt = prize*100
+            prize = '{:,}'.format(int(prize))
             if message_data["code"] != 21:
                 print(message_data)
             if message_data["code"] == 41:
@@ -150,7 +152,7 @@ def connect_websocket(socket_url, auth_token):
                         s = s + anNum
                         percent = answer["percent"]
                         e = e + percent
-                pay = (100000)/(int(advancing))
+                pay = (pt)/(int(advancing))
                 payout = int(pay) + sb
                 if ansid == optid1:
                     option = f"Option 1. {optid1}"
@@ -166,7 +168,7 @@ def connect_websocket(socket_url, auth_token):
                 hook.send(embed=embed)
             if message_data["code"] == 49:
                 sb = message_data["winners"][0]["sb"]
-                embed = discord.Embed(title="**__Game Summary !__**", description=f"**• Payout : {sb}SB\n• Total Winners : {advancing}\n• Prize Money : $1,000**", color=discord.Colour.random())
+                embed = discord.Embed(title="**__Game Summary !__**", description=f"**• Payout : {sb}SB\n• Total Winners : {advancing}\n• Prize Money : ${prize}**", color=discord.Colour.random())
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text="Swagbucks Live | Subrata#3250")
                 hook.send(embed=embed)
