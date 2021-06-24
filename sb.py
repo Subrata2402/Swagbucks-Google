@@ -122,9 +122,9 @@ def connect_websocket(socket_url, auth_token):
             if message_data["code"] == 41:
                 qn = message_data["question"]["number"]
                 tqn = message_data["question"]["totalQuestions"]
-                optdi1 = message_data["question"]["answers"][0]["id"]
-                optdi2 = message_data["question"]["answers"][1]["id"]
-                optdi3 = message_data["question"]["answers"][2]["id"]
+                optid1 = message_data["question"]["answers"][0]["id"]
+                optid2 = message_data["question"]["answers"][1]["id"]
+                optid3 = message_data["question"]["answers"][2]["id"]
                 sb = message_data["question"]["sb"]
                 embed=discord.Embed(title=f"**Question {qn} out of {tqn}**", description=f"**SB for this Question : 0{sb}**", color=discord.Colour.random())
                 embed.add_field(name="**Options Id :-**", value=f"**1 - {optid1}\n2 - {optid2}\n3 - {optid3}**")
