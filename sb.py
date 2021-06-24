@@ -70,7 +70,7 @@ def show_not_on():
         data = response_data1
         title = data["episode"]["title"]
         prize = data["episode"]["grandPrizeDollars"]
-        payout = prize*1000
+        pt = prize*1000
         prize = '{:,}'.format(int(prize))
         time = data["episode"]["start"]
         r = datetime.fromtimestamp(time)
@@ -147,7 +147,7 @@ def connect_websocket(socket_url, auth_token):
                         s = s + anNum
                         percent = answer["percent"]
                         e = e + percent
-                pay = (payout)/(int(advancing))
+                pay = (pt)/(int(advancing))
                 payout = int(pay) + sb
                 if ansid == optid1:
                     option = f"Option 1. {optid1}"
