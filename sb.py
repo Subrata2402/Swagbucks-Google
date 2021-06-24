@@ -147,7 +147,7 @@ def connect_websocket(socket_url, auth_token):
                         s = s + anNum
                         percent = answer["percent"]
                         e = e + percent
-                pay = (pt)/(int(advancing))
+                pay = (100000)/(int(advancing))
                 payout = int(pay) + sb
                 if ansid == optid1:
                     option = f"Option 1. {optid1}"
@@ -163,7 +163,7 @@ def connect_websocket(socket_url, auth_token):
                 hook.send(embed=embed)
             if message_data["code"] == 49:
                 sb = message_data["winners"][0]["sb"]
-                embed = discord.Embed(title="**__Game Summary !__**", description=f"**• Payout : {sb}SB\n• Total Winners : {advancing}\n• Prize Money : ${prize}**", color=discord.Colour.random())
+                embed = discord.Embed(title="**__Game Summary !__**", description=f"**• Payout : {sb}SB\n• Total Winners : {advancing}\n• Prize Money : $1,000**", color=discord.Colour.random())
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text="Swagbucks Live | Subrata#3250")
                 hook.send(embed=embed)
