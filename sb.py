@@ -21,23 +21,23 @@ import asyncio
 
 BEARER_TOKEN = "BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w"
 
-webhook_url="https://discordapp.com/api/webhooks/856696688437755934/9NW-2w46XZp-Sd2TmZuJTAg2hz7FVFPVDt4VY_7ZnXf_5yhjB1yQHGFe_Eh23KXMj8aM"
+webhook_url="https://discordapp.com/api/webhooks/857557885441277992/Vct33Ktt667U0aYoUkitcyOWHDcdTFD59gBLUJYUppX-ROkBaT-AWtYmywa8y3KgLWxY"
 web_url = "https://discordapp.com/api/webhooks/857113978534232064/h4a4RBLkl4AfLXnhehEq4OECRS3x9t_16nJO95XCbgN7irSsSE8ldEQKPDZ8NsDt0-8b"
 
 try:
-    hook = Webhook(webhook_url)
+    hook = Webhook(webhook_url) #google pro bot
 except:
     print("Invalid WebHook Url!")
 
 try:
-    sbl = Webhook(web_url)
+    sbl = Webhook(web_url) #spamming
 except:
     print("Invalid WebHook Url!")
 
 web_url = "https://discordapp.com/api/webhooks/857540833196113930/DrrhTfgpK-p_q0_kkDj1psS7TkECy_NZE_OLjvZpg-FJWDClhdzey6OT-6u9KkM5Cx3f"
 
 try:
-    sb = Webhook(web_url)
+    sb = Webhook(web_url) #boss sb
 except:
     print("Invalid WebHook Url!")
 
@@ -90,7 +90,8 @@ def show_not_on():
         embed.set_footer(text="Swagbucks Live")
         embed.timestamp = datetime.utcnow()
         sbl.send(embed=embed)
-        #sb.send(embed=embed)
+        sb.send(embed=embed)
+        hook.send(embed=embed)
 
 def show_active():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
@@ -157,9 +158,11 @@ def connect_websocket(socket_url, auth_token):
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text=f"Swagbucks Live")
                 embed.timestamp = datetime.utcnow()
+                sb.send(embed=embed)
                 hook.send(embed=embed)
                 time.sleep(10)
                 embed=discord.Embed(title="**⏰ | Time's Up!**", color=discord.Colour.random())
+                sb.send(embed=embed)
                 hook.send(embed=embed)
             if message_data["code"] == 42:
                 ansid = message_data["correctAnswerId"]
@@ -188,6 +191,7 @@ def connect_websocket(socket_url, auth_token):
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text="Swagbucks Live")
                 embed.timestamp = datetime.utcnow()
+                sb.send(embed=embed)
                 hook.send(embed=embed)
             if message_data["code"] == 49:
                 sb = message_data["winners"][0]["sb"]
@@ -195,6 +199,7 @@ def connect_websocket(socket_url, auth_token):
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text="Swagbucks Live")
                 embed.timestamp = datetime.utcnow()
+                sb.send(embed=embed)
                 hook.send(embed=embed)
 
 
