@@ -144,7 +144,7 @@ def connect_websocket(socket_url, auth_token):
                 optid3 = message_data["question"]["answers"][2]["id"]
                 sb = message_data["question"]["sb"]
                 embed=discord.Embed(title=f"**Question {qn} out of {tqn}**", color=discord.Colour.random())
-                embed.add_field(name="**Options Id :-**", value=f"**1 - {optid1}\n2 - {optid2}\n3 - {optid3}**")
+                embed.add_field(name="**Options Id :-**", value=f"**１. {optid1}\n２. {optid2}\n３. {optid3}**")
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text=f"SB for this Question : 0{sb}")
                 hook.send(embed=embed)
@@ -167,11 +167,11 @@ def connect_websocket(socket_url, auth_token):
                 pay = int(current_prize())/(int(advancing))
                 payout = int(pay) + sb
                 if ansid == optid1:
-                    option = f"Option 1. {optid1}"
+                    option = f"Option １. {optid1}"
                 if ansid == optid2:
-                    option = f"Option 2. {optid2}"
+                    option = f"Option ２. {optid2}"
                 if ansid == optid3:
-                    option = f"Option 3. {optid3}"
+                    option = f"Option ３. {optid3}"
                 embed=discord.Embed(title=f"**Question {qn} out of {tqn}**", color=discord.Colour.random())
                 embed.add_field(name="**Correct Answer :-**", value=f"**{option}**")
                 embed.add_field(name="**Status :-**", value=f"**• Advancing Players : {advancing} ({pA}%)\n• Elimineted Players : {s} ({e}%)\n• Current Payout : {payout}SB**")
