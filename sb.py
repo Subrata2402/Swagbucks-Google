@@ -160,6 +160,8 @@ def connect_websocket(socket_url, auth_token):
                 embed.timestamp = datetime.utcnow()
                 sb.send(embed=embed)
                 hook.send(embed=embed)
+                sb.send("sw")
+                hook.send("s")
                 time.sleep(10)
                 embed=discord.Embed(title="**⏰ | Time's Up!**", color=discord.Colour.random())
                 sb.send(embed=embed)
