@@ -96,7 +96,6 @@ def prize_money():
                "user-agent": "SwagIQ-Android/34 (okhttp/3.10.0)"}
     response_data = requests.post(url=main_url, headers=headers).json()
     prize = response_data["episode"]["grandPrizeDollars"]
-    pt = prize*100
     prize = '{:,}'.format(int(prize))
     return prize
 
