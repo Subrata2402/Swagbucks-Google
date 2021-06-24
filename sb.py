@@ -80,7 +80,7 @@ def show_not_on():
         time = new_time.strftime("%d-%m-%Y %I:%M %p")
         embed=discord.Embed(title="**__SwagIQ Next Show Details !__**", description=f"**• Show Name : Swagbucks Live\n• Show Time : {time}\n• Prize Money : ${prize}**", color=discord.Colour.random())
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
-        embed.set_footer(text="Swagbucks Live | Subrata#3250")
+        #embed.set_footer(text="Swagbucks Live | Subrata#3250")
         hq.send(embed=embed)
 
 def show_active():
@@ -143,10 +143,10 @@ def connect_websocket(socket_url, auth_token):
                 optid2 = message_data["question"]["answers"][1]["id"]
                 optid3 = message_data["question"]["answers"][2]["id"]
                 sb = message_data["question"]["sb"]
-                embed=discord.Embed(title=f"**Question {qn} out of {tqn}**", description=f"**SB for this Question : 0{sb}**", color=discord.Colour.random())
+                embed=discord.Embed(title=f"**Question {qn} out of {tqn}**", color=discord.Colour.random())
                 embed.add_field(name="**Options Id :-**", value=f"**1 - {optid1}\n2 - {optid2}\n3 - {optid3}**")
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
-                embed.set_footer(text="Swagbucks Live | Subrata#3250")
+                embed.set_footer(text=f"SB for this Question : 0{sb}")
                 hook.send(embed=embed)
                 time.sleep(10)
                 embed=discord.Embed(title="**⏰ | Time's Up!**", color=discord.Colour.random())
@@ -176,13 +176,13 @@ def connect_websocket(socket_url, auth_token):
                 embed.add_field(name="**Correct Answer :-**", value=f"**{option}**")
                 embed.add_field(name="**Status :-**", value=f"**• Advancing Players : {advancing} ({pA}%)\n• Elimineted Players : {s} ({e}%)\n• Current Payout : {payout}SB**")
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
-                embed.set_footer(text="Swagbucks Live | Subrata#3250")
+                #embed.set_footer(text="Swagbucks Live | Subrata#3250")
                 hook.send(embed=embed)
             if message_data["code"] == 49:
                 sb = message_data["winners"][0]["sb"]
                 embed = discord.Embed(title="**__Game Summary !__**", description=f"**• Payout : {sb}SB\n• Total Winners : {advancing}\n• Prize Money : ${prize_money()}**", color=discord.Colour.random())
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
-                embed.set_footer(text="Swagbucks Live | Subrata#3250")
+                #embed.set_footer(text="Swagbucks Live | Subrata#3250")
                 hook.send(embed=embed)
 
 
