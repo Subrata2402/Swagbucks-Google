@@ -82,8 +82,6 @@ def show_not_on():
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
         embed.set_footer(text="Swagbucks Live | Subrata#3250")
         hq.send(embed=embed)
-        hq.send(prize_money())
-        hq.send(current_prize())
 
 def show_active():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
@@ -137,13 +135,6 @@ def connect_websocket(socket_url, auth_token):
             message = msg.text
             message = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", message)
             message_data = json.loads(message)
-            main_url = f"https://api.playswagiq.com/trivia/home?_uid="
-            headers = {"Authorization": f"Bearer {BEARER_TOKEN}",
-                       "user-agent": "SwagIQ-Android/34 (okhttp/3.10.0)"}
-            response_data = requests.post(url=main_url, headers=headers).json()
-            prize = response_data["episode"]["grandPrizeDollars"]
-            pt = prize*100
-            prize = '{:,}'.format(int(prize))
             if message_data["code"] != 21:
                 print(message_data)
             if message_data["code"] == 41:
@@ -174,7 +165,7 @@ def connect_websocket(socket_url, auth_token):
                         s = s + anNum
                         percent = answer["percent"]
                         e = e + percent
-                pay = (pt)/(int(advancing))
+                pay = int(current_prize())/(int(advancing))
                 payout = int(pay) + sb
                 if ansid == optid1:
                     option = f"Option 1. {optid1}"
@@ -190,7 +181,7 @@ def connect_websocket(socket_url, auth_token):
                 hook.send(embed=embed)
             if message_data["code"] == 49:
                 sb = message_data["winners"][0]["sb"]
-                embed = discord.Embed(title="**__Game Summary !__**", description=f"**• Payout : {sb}SB\n• Total Winners : {advancing}\n• Prize Money : ${prize}**", color=discord.Colour.random())
+                embed = discord.Embed(title="**__Game Summary !__**", description=f"**• Payout : {sb}SB\n• Total Winners : {advancing}\n• Prize Money : ${prize_money()}**", color=discord.Colour.random())
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text="Swagbucks Live | Subrata#3250")
                 hook.send(embed=embed)
