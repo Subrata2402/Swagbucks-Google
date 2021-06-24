@@ -19,8 +19,11 @@ import aniso8601
 import aiohttp
 import asyncio
 
+BEARER_TOKEN = "BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w"
+
 webhook_url="https://discordapp.com/api/webhooks/856696688437755934/9NW-2w46XZp-Sd2TmZuJTAg2hz7FVFPVDt4VY_7ZnXf_5yhjB1yQHGFe_Eh23KXMj8aM"
 web_url = "https://discordapp.com/api/webhooks/857113978534232064/h4a4RBLkl4AfLXnhehEq4OECRS3x9t_16nJO95XCbgN7irSsSE8ldEQKPDZ8NsDt0-8b"
+
 try:
     hook = Webhook(webhook_url)
 except:
@@ -79,7 +82,8 @@ def show_not_on():
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
         embed.set_footer(text="Swagbucks Live | Subrata#3250")
         hq.send(embed=embed)
-
+        hq.send(prize_money())
+        hq.send(current_prize())
 
 def show_active():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
@@ -88,6 +92,24 @@ def show_active():
     response_data = requests.post(url=main_url, headers=headers).json()
     return response_data['success']
 
+def prize_money():
+    main_url = f"https://api.playswagiq.com/trivia/home?_uid="
+    headers = {"Authorization": f"Bearer {BEARER_TOKEN}",
+               "user-agent": "SwagIQ-Android/34 (okhttp/3.10.0)"}
+    response_data = requests.post(url=main_url, headers=headers).json()
+    prize = response_data["episode"]["grandPrizeDollars"]
+    pt = prize*100
+    prize = '{:,}'.format(int(prize))
+    return prize
+
+def current_prize():
+    main_url = f"https://api.playswagiq.com/trivia/home?_uid="
+    headers = {"Authorization": f"Bearer {BEARER_TOKEN}",
+               "user-agent": "SwagIQ-Android/34 (okhttp/3.10.0)"}
+    response_data = requests.post(url=main_url, headers=headers).json()
+    prize = response_data["episode"]["grandPrizeDollars"]
+    pay = prize*100
+    return pay
 
 def get_socket_url():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
