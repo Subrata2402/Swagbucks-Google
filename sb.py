@@ -159,7 +159,7 @@ def connect_websocket(socket_url, auth_token):
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text=f"Swagbucks Live")
                 embed.timestamp = datetime.utcnow()
-                sb.send(embed=embed)
+                #sb.send(embed=embed)
                 hook.send(embed=embed)
                 #sbm.send("sw")
                 hook.send("s")
