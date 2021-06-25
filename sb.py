@@ -183,7 +183,7 @@ def connect_websocket(socket_url, auth_token):
                         percent = answer["percent"]
                         e = e + percent
                 pay = int(current_prize())/(int(advancing))
-                payout = int(pay) + sb
+                payout = int(pay) + int(qn)
                 if ansid == optid1:
                     option = f"Option １. {optid1}"
                 if ansid == optid2:
