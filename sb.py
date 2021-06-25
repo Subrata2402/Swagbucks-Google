@@ -90,8 +90,8 @@ def show_not_on():
         embed.set_footer(text="Swagbucks Live")
         embed.timestamp = datetime.utcnow()
         sbl.send(embed=embed)
-        #sbm.send(embed=embed)
-        #hook.send(embed=embed)
+        sbm.send(embed=embed)
+        hook.send(embed=embed)
 
 def show_active():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
