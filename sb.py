@@ -18,7 +18,7 @@ from dhooks import Webhook, Embed
 import aniso8601
 import aiohttp
 import asyncio
-
+sb = 0
 
 BEARER_TOKEN = "BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w"
 
