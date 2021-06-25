@@ -153,7 +153,10 @@ def connect_websocket(socket_url, auth_token):
                 optid1 = message_data["question"]["answers"][0]["id"]
                 optid2 = message_data["question"]["answers"][1]["id"]
                 optid3 = message_data["question"]["answers"][2]["id"]
-                sb = message_data["question"]["sb"]
+                try:
+                    sb = message_data["question"]["sb"]
+                except:
+                    sb = 0
                 embed=discord.Embed(title=f"**Question {qn} out of {tqn}**", description=f"**SB for this Question : 0{sb}**", color=discord.Colour.random())
                 embed.add_field(name="**Options Id :-**", value=f"**１. {optid1}\n２. {optid2}\n３. {optid3}**")
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
