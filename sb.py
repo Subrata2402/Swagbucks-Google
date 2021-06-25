@@ -18,7 +18,6 @@ from dhooks import Webhook, Embed
 import aniso8601
 import aiohttp
 import asyncio
-sb = 0
 
 BEARER_TOKEN = "BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w"
 
@@ -91,8 +90,8 @@ def show_not_on():
         embed.set_footer(text="Swagbucks Live")
         embed.timestamp = datetime.utcnow()
         sbl.send(embed=embed)
-        #sb.send(embed=embed)
-       # hook.send(embed=embed)
+        sbm.send(embed=embed)
+        hook.send(embed=embed)
 
 def show_active():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
@@ -162,13 +161,13 @@ def connect_websocket(socket_url, auth_token):
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text=f"Swagbucks Live")
                 embed.timestamp = datetime.utcnow()
-                #sb.send(embed=embed)
+                sbm.send(embed=embed)
                 hook.send(embed=embed)
-                #sbm.send("sw")
+                sbm.send("sw")
                 hook.send("s")
                 time.sleep(10)
                 embed=discord.Embed(title="**⏰ | Time's Up!**", color=discord.Colour.random())
-                #sbm.send(embed=embed)
+                sbm.send(embed=embed)
                 hook.send(embed=embed)
             if message_data["code"] == 42:
                 ansid = message_data["correctAnswerId"]
@@ -197,7 +196,7 @@ def connect_websocket(socket_url, auth_token):
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text="Swagbucks Live")
                 embed.timestamp = datetime.utcnow()
-               # sbm.send(embed=embed)
+                sbm.send(embed=embed)
                 hook.send(embed=embed)
             if message_data["code"] == 49:
                 sb = message_data["winners"][0]["sb"]
@@ -205,7 +204,7 @@ def connect_websocket(socket_url, auth_token):
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text="Swagbucks Live")
                 embed.timestamp = datetime.utcnow()
-               # sbm.send(embed=embed)
+                sbm.send(embed=embed)
                 hook.send(embed=embed)
 
 
