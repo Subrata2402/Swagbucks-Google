@@ -70,7 +70,7 @@ def show_not_on():
 
     logging.info(response_data1)
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
-    headers = {"Authorization": "Bearer BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w",
+    headers = {"Authorization": f"Bearer {BEARER_TOKEN}",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
     response_data = requests.post(url=main_url, headers=headers).json()
     if response_data["success"] == False:
@@ -95,7 +95,7 @@ def show_not_on():
 
 def show_active():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
-    headers = {"Authorization": "Bearer BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w",
+    headers = {"Authorization": f"Bearer {BEARER_TOKEN}",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
     response_data = requests.post(url=main_url, headers=headers).json()
     return response_data['success']
@@ -120,7 +120,7 @@ def current_prize():
 
 def get_socket_url():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
-    headers = {"Authorization": "Bearer BoevwXaFzGYgR3WKHrH8L_tmGb0j_3k6a-dMEN2Z4iQPZiTHQ0uO9QKaR4NMf7H95hNUvf0LMO3aKVi031S7gVoc4yP_2w",
+    headers = {"Authorization": f"Bearer {BEARER_TOKEN}",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
     response_data = requests.post(url=main_url, headers=headers).json()
     #if response_data["success"] != False:
