@@ -42,21 +42,6 @@ except:
     print("Invalid WebHook Url!")
 
 def show_not_on():
-    colorama.init()
-    # Set up logging
-    logging.basicConfig(filename="data.log", level=logging.INFO, filemode="w")
-
-    # Read in bearer token and user ID
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "BTOKEN.txt"), "r") as conn_settings:
-        settings = conn_settings.read().splitlines()
-        settings = [line for line in settings if line != "" and line != " "]
-
-        try:
-            BEARER_TOKEN = settings[0].split("=")[1]
-        except IndexError as e:
-            logging.fatal(f"Settings read error: {settings}")
-            raise e
-
     main_url = f"https://api.playswagiq.com/trivia/home?_uid="
     headers = {
                "Authorization": f"Bearer {BEARER_TOKEN}",
@@ -90,8 +75,8 @@ def show_not_on():
         embed.set_footer(text="Swagbucks Live")
         embed.timestamp = datetime.utcnow()
         sbl.send(embed=embed)
-        #sbm.send(embed=embed)
-        #hook.send(embed=embed)
+        sbm.send(embed=embed)
+        hook.send(embed=embed)
 
 def show_active():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
@@ -209,17 +194,8 @@ def connect_websocket(socket_url, auth_token):
 
 
 def get_auth_token():
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "BTOKEN.txt"), "r") as conn_settings:
-        settings = conn_settings.read().splitlines()
-        settings = [line for line in settings if line != "" and line != " "]
-
-        try:
-            auth_token = settings[0].split("=")[1]
-        except IndexError:
-            print('No Key is given!')
-            return 'NONE'
-
-        return auth_token
+    auth_token = BEARER_TOKEN
+    return auth_token
 
 while True:
     if show_active():
