@@ -53,7 +53,6 @@ def show_not_on():
         print("Server response not JSON, retrying...")
         time.sleep(1)
 
-    logging.info(response_data1)
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
     headers = {"Authorization": f"Bearer {BEARER_TOKEN}",
                "user-agent":"SwagIQ-Android/34 (okhttp/3.10.0)"}
@@ -75,8 +74,8 @@ def show_not_on():
         embed.set_footer(text="Swagbucks Live")
         embed.timestamp = datetime.utcnow()
         sbl.send(embed=embed)
-        sbm.send(embed=embed)
-        hook.send(embed=embed)
+        #sbm.send(embed=embed)
+        #hook.send(embed=embed)
 
 def show_active():
     main_url = 'https://api.playswagiq.com/trivia/join?_uid='
