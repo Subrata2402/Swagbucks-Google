@@ -185,7 +185,8 @@ def connect_websocket(socket_url, auth_token):
             if message_data["code"] == 49:
                 all_sb = []
                 s = 0
-                for i in message_data["winners"]:
+                winners = message_data["winners"]
+                for i in winners:
                     all_sb.append(i["sb"])
                     s = s + 1
                     if s == 20:
