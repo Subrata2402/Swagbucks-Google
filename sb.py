@@ -183,7 +183,15 @@ def connect_websocket(socket_url, auth_token):
                 sbm.send(embed=embed)
                 hook.send(embed=embed)
             if message_data["code"] == 49:
-                sb = message_data["winners"][0]["sb"]
+                all_sb = []
+                s = 0
+                for i in message_data["winners"]:
+                    all_sb.append(i["sb"])
+                    s = s + 1
+                    if s == 20:
+                        break
+                sb = sorted(all_sb, reverse=True)
+                sb = sb[0]
                 embed = discord.Embed(title="**__Game Summary !__**", description=f"**• Payout : {sb}SB\n• Total Winners : {advancing}\n• Prize Money : ${prize_money()}**", color=discord.Colour.random())
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/840841165544620062/843859541627764776/762971334774489111.png")
                 embed.set_footer(text="Swagbucks Live")
