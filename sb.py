@@ -19,7 +19,7 @@ import aniso8601
 import aiohttp
 import asyncio
 
-BEARER_TOKEN = "BpnaAWVfpcYp95kNfEmjIkBbNeEO13VnK7QLLpauVEAPFS4ZY-uanvijUMd3K93RWBxdHYED43rb9wnDc8-dUuQxdKt43w"
+BEARER_TOKEN = "Bpevil2udWtN9yXpmXsgHSxUtHPU6uRNYt18XlPCvjI3vGhm_MavTgiA0FnK7h9MlaTlm4PbGkemccOHKmXEqLBXukUukA"
 
 webhook_url="https://discordapp.com/api/webhooks/857557885441277992/Vct33Ktt667U0aYoUkitcyOWHDcdTFD59gBLUJYUppX-ROkBaT-AWtYmywa8y3KgLWxY"
 web_url = "https://discordapp.com/api/webhooks/857113978534232064/h4a4RBLkl4AfLXnhehEq4OECRS3x9t_16nJO95XCbgN7irSsSE8ldEQKPDZ8NsDt0-8b"
