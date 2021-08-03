@@ -21,7 +21,7 @@ import asyncio
 
 BEARER_TOKEN = "Bpevil2udWtN9yXpmXsgHSxUtHPU6uRNYt18XlPCvjI3vGhm_MavTgiA0FnK7h9MlaTlm4PbGkemccOHKmXEqLBXukUukA"
 
-webhook_url="https://discordapp.com/api/webhooks/857557885441277992/Vct33Ktt667U0aYoUkitcyOWHDcdTFD59gBLUJYUppX-ROkBaT-AWtYmywa8y3KgLWxY"
+webhook_url="https://discordapp.com/api/webhooks/872140161327181885/iq6-JJllEkI-loA5h1WLz-zneW-pers4_PnEEzW8eQPb87ND_O2c3aN5KferT03j4-cq"
 web_url = "https://discordapp.com/api/webhooks/857113978534232064/h4a4RBLkl4AfLXnhehEq4OECRS3x9t_16nJO95XCbgN7irSsSE8ldEQKPDZ8NsDt0-8b"
 
 try:
