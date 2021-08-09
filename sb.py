@@ -34,7 +34,7 @@ try:
 except:
     print("Invalid WebHook Url!")
 
-web_url = "https://discordapp.com/api/webhooks/870090289514172487/qvev9wHUqOuR9k0q9hC8eFH4wMO-Ym8DjpXu1NHaKa-xzYAH4L1hMQ6l-1-AkGaecs-h"
+web_url = "https://discordapp.com/api/webhooks/874331448696520747/2So76G_t_0U-_Zz-08wLYOnSVFwcy-CM3e13sFVc3b8nEGJVH4jEkpgVLJvjSG3evpzv"
 
 try:
     sbm = Webhook(web_url) #testing
@@ -147,7 +147,7 @@ def connect_websocket(socket_url, auth_token):
                 embed.timestamp = datetime.utcnow()
                 sbm.send(embed=embed)
                 hook.send(embed=embed)
-                sbm.send("sb")
+                sbm.send("-")
                 hook.send("s")
                 time.sleep(10)
                 embed=discord.Embed(title="**⏰ | Time's Up!**", color=discord.Colour.random())
