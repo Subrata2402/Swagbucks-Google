@@ -25,19 +25,19 @@ webhook_url="https://discordapp.com/api/webhooks/870090289514172487/qvev9wHUqOuR
 web_url = "https://discordapp.com/api/webhooks/857113978534232064/h4a4RBLkl4AfLXnhehEq4OECRS3x9t_16nJO95XCbgN7irSsSE8ldEQKPDZ8NsDt0-8b"
 
 try:
-    hook = Webhook(webhook_url) #google pro bot
+    hook = Webhook(webhook_url)
 except:
     print("Invalid WebHook Url!")
 
 try:
-    sbl = Webhook(web_url) #spamming
+    sbl = Webhook(web_url)
 except:
     print("Invalid WebHook Url!")
 
 web_url = "https://discordapp.com/api/webhooks/874331448696520747/2So76G_t_0U-_Zz-08wLYOnSVFwcy-CM3e13sFVc3b8nEGJVH4jEkpgVLJvjSG3evpzv"
 
 try:
-    sbm = Webhook(web_url) #testing
+    sbm = Webhook(web_url)
 except:
     print("Invalid WebHook Url!")
 
@@ -147,8 +147,8 @@ def connect_websocket(socket_url, auth_token):
                 embed.timestamp = datetime.utcnow()
                 sbm.send(embed=embed)
                 hook.send(embed=embed)
-                sbm.send("-")
-                hook.send("s")
+                #sbm.send("-")
+                #hook.send("s")
                 time.sleep(10)
                 embed=discord.Embed(title="**⏰ | Time's Up!**", color=discord.Colour.random())
                 sbm.send(embed=embed)
