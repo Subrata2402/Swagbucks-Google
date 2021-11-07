@@ -21,8 +21,8 @@ import asyncio
 
 BEARER_TOKEN = "BsfoofrVDTlZAVoF2Okav7luCBoy0QASbbRqhyMoOQ7N2CsvgXNdDXSh5yzbUQ5W4xxcuJGdqYKfOwszAIk1OZLxRmtcOw"
 
-webhook_url="https://discordapp.com/api/webhooks/870090289514172487/qvev9wHUqOuR9k0q9hC8eFH4wMO-Ym8DjpXu1NHaKa-xzYAH4L1hMQ6l-1-AkGaecs-h"
-web_url = "https://discordapp.com/api/webhooks/857113978534232064/h4a4RBLkl4AfLXnhehEq4OECRS3x9t_16nJO95XCbgN7irSsSE8ldEQKPDZ8NsDt0-8b"
+webhook_url="https://discord.com/api/webhooks/870090289514172487/qvev9wHUqOuR9k0q9hC8eFH4wMO-Ym8DjpXu1NHaKa-xzYAH4L1hMQ6l-1-AkGaecs-h"
+web_url = "https://discord.com/api/webhooks/857113978534232064/h4a4RBLkl4AfLXnhehEq4OECRS3x9t_16nJO95XCbgN7irSsSE8ldEQKPDZ8NsDt0-8b"
 
 try:
     hook = Webhook(webhook_url)
@@ -34,7 +34,7 @@ try:
 except:
     print("Invalid WebHook Url!")
 
-web_url = "https://discordapp.com/api/webhooks/874331448696520747/2So76G_t_0U-_Zz-08wLYOnSVFwcy-CM3e13sFVc3b8nEGJVH4jEkpgVLJvjSG3evpzv"
+web_url = "https://discord.com/api/webhooks/874331448696520747/2So76G_t_0U-_Zz-08wLYOnSVFwcy-CM3e13sFVc3b8nEGJVH4jEkpgVLJvjSG3evpzv"
 
 try:
     sbm = Webhook(web_url)
